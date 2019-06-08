@@ -1,5 +1,7 @@
 ### Readme.md
 
+- 这是一个探索 ssr + hooks 工程化的项目
+
 ### TODO
 
 - [x] 配置 vscode
