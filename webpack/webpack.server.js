@@ -1,9 +1,10 @@
 /**
  * @file webpack.server.js
  * ----------
- * File Created: Tuesday, 28th May 2019 11:07:33 pm
- * Last Modified: Wednesday, 5th June 2019 11:08:35 pm
+ * File Created: Saturday, 8th June 2019 11:18:55 am
+ * Last Modified: Saturday, 8th June 2019 3:22:02 pm
  * Modified By: kangkai (kakcool@qq.com)
  * ----------
  * @author kangkai
+ * @description webpack服务端配置信息
  */

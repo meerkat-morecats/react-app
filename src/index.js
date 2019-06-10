@@ -1,4 +1,2 @@
-import React, { Component } from 'react'
-import ReactDom from 'react-dom'
+import Home from './Home';
 
-ReactDom.render(<div>Hello world!</div>, document.getElementById('app'))
