@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 
 
 // // 设置静态文件目录
-app.use(express.static(path.join(__dirname, "dist"), { maxAge: '30d' }));
+app.use('/js',express.static(path.join(__dirname, "dist/js"), { maxAge: '30d' }));
 
 app.listen(PORT, () => {
   logger.info(`SSR is running on ${PORT}!`);

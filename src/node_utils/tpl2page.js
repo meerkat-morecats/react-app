@@ -20,12 +20,17 @@ function tpl2page(reactElement) {
   return `
     <html>
       <body>
-        <div class='root'>
+        <div id='root'>
           ${ReactDomServer.renderToString(reactElement)}
         </div>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>  
+        <script src="/js/index.js" text="text/javascript" ></script>
       </body>
     </html>
   `
 }
 
+{/* <script src="https://cdn.jsdelivr.net/npm/react@16.7.0/umd/react.production.min.js" text="text/javascript" ></script/>
+<script src="/js/index.js" text="text/javascript" ></script/> */}
 module.exports = tpl2page;
