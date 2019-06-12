@@ -1,9 +1,10 @@
-### Readme.md
+# Readme.md
 
 - 这是一个探索 react hooks ssr 工程化的项目
 
-### 目录结构
+## 目录结构
 
+```
 .
 ├── config 配置
 │ └── ...
@@ -25,8 +26,9 @@
 │ └── ...
 ├── package.json
 └── ...
+```
 
-### TODO
+## TODO
 
 - [x] 配置开发环境
 - [ ] 配置 webpack

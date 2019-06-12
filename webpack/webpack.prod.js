@@ -21,9 +21,8 @@ const output = {
 
 const config = commonWebpack.getConfig();
 config.entry = path.join(__dirname, "../src/app.js");
-
+console.log(config.entry);
 config.target = "web";
 config.output = output;
-config.entry = entry;
 
 module.exports = config;

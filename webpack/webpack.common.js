@@ -58,13 +58,13 @@ exports.getConfig = function() {
           use: [
             {
               loader: "babel-loader"
-            },
-            {
-              loader: "eslint-loader",
-              options: {
-                quiet: true
-              }
             }
+            // {
+            //   loader: "eslint-loader",
+            //   options: {
+            //     quiet: true
+            //   }
+            // }
           ]
         },
         {
