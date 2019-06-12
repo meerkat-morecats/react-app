@@ -26,7 +26,7 @@ function tpl2page(reactElement) {
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
         <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>  
-        <script src="/js/index.js" type="text/babel"  ></script>
+        <script src="/dist/js/index.js" type="text/babel"  ></script>
       </body>
     </html>
   `

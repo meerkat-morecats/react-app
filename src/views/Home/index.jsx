@@ -2,6 +2,7 @@ const React = require('react');
 
 const {useEffect} = React;
  
+import MyComponent from './component'
 
 function Test() {
   return <div className="test">hello component</div>
@@ -12,7 +13,7 @@ function Test2() {
 }
 
 function Home() {
-  function handleClick(e) {
+  function handleClick(e) { 
     console.log(e);
     alert('123123')
   }
@@ -24,6 +25,7 @@ function Home() {
     <button onClick={handleClick}>click</button>
     <Test />
     <Test2 />
+    <MyComponent />
   </div>)
 }
 Home.getInitialState=(e)=>{
