@@ -11,7 +11,7 @@ const { printf, combine, timestamp, label } = winston.format;
 const format = printf(options => {
   const { level, message } = options;
   const time = moment().format("YYYY-MM-DD hh:mm:ss");
-  return `${time} [${level}] <${message}>`;
+  return `${time} [${level}] - ${message}`;
 });
 
 const ERROR_CONFIG = {
