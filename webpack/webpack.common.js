@@ -6,7 +6,7 @@
  * Modified By: kangkai (kakcool@qq.com)
  * ----------
  * @author kangkai
- * @description
+ * @description 基础的webpack配置
  */
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");

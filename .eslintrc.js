@@ -19,7 +19,7 @@ module.exports = {
   plugins: ["react"],
   rules: {
     // off=0, warn=1, error=2, 如果是数组, 第二项表示参数option
-    indent: [4, 2], // 控制缩进为2
+    indent: [2, 4], // 控制缩进为2
     eqeqeq: 1, // 警告使用全等
     quotes: [2, "single"], //单引号
     "no-console": 0, //不禁用console
