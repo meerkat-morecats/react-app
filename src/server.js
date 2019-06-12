@@ -32,7 +32,7 @@ app.use(parser.urlencoded({ extended: true })); // parsing application/x-www-for
 // 根据路由判断渲染那个页面
 app.get('/', (req, res) => {
   console.log('request comming')
-  res.end(page(<Home />))
+  res.end(page(<Home test='123123' />))
 })
 
 
