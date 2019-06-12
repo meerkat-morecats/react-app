@@ -8,3 +8,22 @@
  * @author kangkai
  * @description webpack生产环境配置信息
  */
+
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const commonWebpack = require("./webpack.common");
+
+const output = {
+  path: path.join(__dirname, "../src/dist/assets"),
+  publicPath: "/assets/"
+};
+
+const config = commonWebpack.getConfig();
+config.entry = path.join(__dirname, "../src/app.js");
+
+config.target = "web";
+config.output = output;
+config.entry = entry;
+
+module.exports = config;
