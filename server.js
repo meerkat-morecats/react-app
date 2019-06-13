@@ -1,18 +1,21 @@
-const ReactDomServer = require("react-dom/server")
 const express = require("express");
 const React = require('react')
+const ReactDOMServer = require('react-dom/server')
 const path = require("path");
-const logger = require("./node_utils/logger");
-const page = require('./node_utils/tpl2page');
+const logger = require("./src/node_utils/logger");
+const page = require('./src/node_utils/tpl2page');
 // const history = require("connect-history-api-fallback");
 const parser = require("body-parser");
-const Home = require("./views/Home/index.jsx")
+const getStaticRoute = require('./dist/ssr-bundle');
+// const Home = require('./src/views/Home/index.jsx')
+const Application = getStaticRoute();
 
 // const favicon = require("serve-favicon");
 
 const app = express();
 const ENV = process.env.NODE_ENV;
 const PORT = ENV === "development" ? 8989 : 80;
+console.log(ReactDOMServer.renderToString(<Application />))
 
 app.use(parser.json()); // parsing application/json
 app.use(parser.urlencoded({ extended: true })); // parsing application/x-www-form-urlencoded
@@ -44,8 +47,7 @@ app.use('/api',(req,res)=>{
 // 根据路由判断渲染那个页面
 app.get('/*', (req, res) => {
   console.log('request comming')
-  console.log(req.path)
-  res.end(page(<Home test='123123' />))
+  res.end(page(<Application test='123123' />))
 })
 
 

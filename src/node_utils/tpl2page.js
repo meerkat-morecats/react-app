@@ -1,6 +1,5 @@
-const ReactDomServer = require("react-dom/server")
 
-function tpl2page(reactElement) {
+function tpl2page(serverHtml) {
 
   // const serverRenderer = (req, res, next) => {
   //   fs.readFile(path.resolve('./build/index.html'), 'utf8', (err, data) => {
@@ -21,17 +20,18 @@ function tpl2page(reactElement) {
     <html>
       <body>
         <div id='root'>
-          ${ReactDomServer.renderToString(reactElement)}
+          ${serverHtml}
         </div>
-        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-        <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>  
-        <script src="/dist/js/index.js" type="text/babel"  ></script>
       </body>
     </html>
   `
 }
 
-{/* <script src="https://cdn.jsdelivr.net/npm/react@16.7.0/umd/react.production.min.js" text="text/javascript" ></script/>
+{/* 
+        <script src="/dist/assets/main.js" type="text/babel"  ></script>
+  
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>  
+  <script src="https://cdn.jsdelivr.net/npm/react@16.7.0/umd/react.production.min.js" text="text/javascript" ></script/>
 <script src="/js/index.js" text="text/javascript" ></script/> */}
 module.exports = tpl2page;

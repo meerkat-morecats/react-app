@@ -100,21 +100,21 @@ exports.getConfig = function() {
       })
     ]
   };
-  if (process.env.NODE_ENV === ENV_PRODUCTION) {
-    config.plugins.push(
-      new webpack.BannerPlugin({
-        banner:
-          "react-ssr version : " + packageInfo.version + " , file : [file]"
-      })
-    );
+  // if (process.env.NODE_ENV === ENV_PRODUCTION) {
+  //   config.plugins.push(
+  //     new webpack.BannerPlugin({
+  //       banner:
+  //         "react-ssr version : " + packageInfo.version + " , file : [file]"
+  //     })
+  //   );
 
-    config.optimization = {
-      // minimize: process.env.NODE_ENV === ENV_PRODUCTION,
-      minimizer: [new OptimizeCSSAssetsPlugin()],
-      mergeDuplicateChunks: true
-    };
-  } else {
-    config.devtool = "cheap-module-eval-source-map";
-  }
+  //   config.optimization = {
+  //     // minimize: process.env.NODE_ENV === ENV_PRODUCTION,
+  //     minimizer: [new OptimizeCSSAssetsPlugin()],
+  //     mergeDuplicateChunks: true
+  //   };
+  // } else {
+  //   config.devtool = "cheap-module-eval-source-map";
+  // }
   return config;
 };

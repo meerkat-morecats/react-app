@@ -15,13 +15,12 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const commonWebpack = require("./webpack.common");
 
 const output = {
-  path: path.join(__dirname, "../src/dist/assets"),
+  path: path.join(__dirname, "../dist/assets"),
   publicPath: "/assets/"
 };
 
 const config = commonWebpack.getConfig();
 config.entry = path.join(__dirname, "../src/app.js");
-console.log(config.entry);
 config.target = "web";
 config.output = output;
 

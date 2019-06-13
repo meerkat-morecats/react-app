@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import MyComponent from "./component";
+import MyComponent from "./component.jsx";
 
 function Test() {
   return <div className="test">hello component</div>;
