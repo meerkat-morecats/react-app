@@ -15,7 +15,7 @@ const Application = getStaticRoute();
 const app = express();
 const ENV = process.env.NODE_ENV;
 const PORT = ENV === "development" ? 8989 : 80;
-console.log(ReactDOMServer.renderToString(<Application />))
+// console.log(ReactDOMServer.renderToString(<Application />))
 
 app.use(parser.json()); // parsing application/json
 app.use(parser.urlencoded({ extended: true })); // parsing application/x-www-form-urlencoded
@@ -47,7 +47,7 @@ app.use('/api',(req,res)=>{
 // 根据路由判断渲染那个页面
 app.get('/*', (req, res) => {
   console.log('request comming')
-  res.end(page(<Application test='123123' />))
+  res.end(page(ReactDOMServer.renderToString(<Application test='123123' />)));
 })
 
 
