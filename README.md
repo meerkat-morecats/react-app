@@ -1,6 +1,4 @@
-# Readme.md
-
-- 这是一个探索 react hooks ssr 工程化的项目
+# react hooks ssr 工程化的项目
 
 ## 目录结构
 
@@ -40,6 +38,6 @@
 - [ ] express 缓存策略、文件压缩、打包
 - [ ] webpack + 单个页面的 ssr
 - [ ] webpack + 多个页面的 ssr
-- [ ] 脚手架、实现页面组建的创建
-- [ ] 与next框架对比
+- [ ] 脚手架、实现页面组件的创建
+- [ ] 与 next 框架对比
 - [ ] 添加测试
