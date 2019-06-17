@@ -17,7 +17,7 @@ const nodeExternals = require('webpack-node-externals')
 const output = {
   path: path.join(__dirname, "../dist"),
   filename: 'server.js',
-  publicPath: "/assets/",
+  // publicPath: "/assets/",
   libraryTarget: "commonjs2"
 };
 

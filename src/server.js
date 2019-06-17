@@ -19,8 +19,11 @@ const PORT = 8989;
 app.use(parser.json()); // parsing application/json
 app.use(parser.urlencoded({ extended: true })); // parsing application/x-www-form-urlencoded
 
+console.log(__dirname);
+console.log(__filename)
+
 // // 设置静态文件目录
-app.use('/dist',express.static(path.join(__dirname, "dist"), { maxAge: '30d' }));
+app.use('/dist',express.static(path.join(process.cwd(), "dist"), { maxAge: '30d' }));
 
 // 设置 favicon.ico
 // app.use(favicon(path.join(__dirname, "dist", "favicon.ico")));
@@ -31,7 +34,7 @@ app.use('/api',(req,res)=>{
   res.end('req api')
 })
 // 根据路由判断渲染那个页面
-app.get('/*', (req, res) => {
+app.get('/', (req, res) => {
   console.log('request comming')
   res.end(page(ReactDOMServer.renderToString(<Application test='123123' />)));
 })
