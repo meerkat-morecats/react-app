@@ -617,8 +617,17 @@ var react_default = /*#__PURE__*/__webpack_require__.n(react);
 var react_dom = __webpack_require__(2);
 var react_dom_default = /*#__PURE__*/__webpack_require__.n(react_dom);
 
-// CONCATENATED MODULE: ./src/views/Home/index.jsx
- // import MyComponent from "./component.jsx";
+// CONCATENATED MODULE: ./src/views/Home/component.js
+var React = __webpack_require__(0);
+
+function MyComponent() {
+  return React.createElement("div", null, "MyComponent");
+}
+
+/* harmony default export */ var component = (MyComponent);
+// CONCATENATED MODULE: ./src/views/Home/index.js
+
+
 
 function Test() {
   return react_default.a.createElement("div", {
@@ -643,7 +652,7 @@ function Home() {
     className: "home"
   }, react_default.a.createElement("span", null, "hello world!"), react_default.a.createElement("button", {
     onClick: handleClick
-  }, "click"), react_default.a.createElement(Test, null), react_default.a.createElement(Test2, null));
+  }, "click"), react_default.a.createElement(Test, null), react_default.a.createElement(Test2, null), react_default.a.createElement(component, null));
 }
 
 Home.getInitialState = function (e) {

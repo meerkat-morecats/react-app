@@ -1,5 +1,5 @@
 import React from "react";
-// import MyComponent from "./component.jsx";
+import MyComponent from "./component";
 
 function Test() {
   return <div className="test">hello component</div>;
@@ -23,7 +23,7 @@ function Home() {
       <button onClick={handleClick}>click</button>
       <Test />
       <Test2 />
-      {/* <MyComponent /> */}
+      <MyComponent />
     </div>
   );
 }

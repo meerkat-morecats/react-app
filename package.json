@@ -4,8 +4,8 @@
   "description": "my node server",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production babel-node ./scripts/server.js",
-    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./server.js",
+    "start": "cross-env node ./dist/server.js",
+    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node ./dist/server.js",
     "debug-server": "cross-env NODE_ENV=development nodemon --exec babel-node --debug ./server/bin/www",
     "build": "sh ./scripts/build.sh",
     "build:ssr": "sh ./scripts/build-ssr.sh",
@@ -55,6 +55,7 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.4",
-    "webpack-dev-server": "^3.4.1"
+    "webpack-dev-server": "^3.4.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }

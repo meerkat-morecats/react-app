@@ -11,7 +11,7 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import { Home } from "./views/Home/index.jsx";
+import { Home } from "./views/Home";
 
 
 ReactDOM.hydrate(<Home />, document.getElementById("root"));
