@@ -1,5 +1,6 @@
 import React from "react";
 import MyComponent from "./component";
+import './home.css';
 
 function Test() {
   return <div className="test">hello component</div>;

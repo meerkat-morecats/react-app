@@ -20,31 +20,31 @@ const ENV_DEVELOPMENT = "development";
 exports.ENV_DEVELOPMENT = ENV_DEVELOPMENT;
 exports.ENV_DEVELOPMENT = ENV_DEVELOPMENT;
 
-exports.getConfig = function() {
+exports.getConfig = function () {
   const cssLoader =
     process.env.NODE_ENV === ENV_PRODUCTION
       ? [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
       : [
-          "css-hot-loader",
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader"
-        ];
+        "css-hot-loader",
+        MiniCssExtractPlugin.loader,
+        "css-loader",
+        "postcss-loader"
+      ];
   const sassLoader =
     process.env.NODE_ENV === ENV_PRODUCTION
       ? [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
-          "sass-loader"
-        ]
+        MiniCssExtractPlugin.loader,
+        "css-loader",
+        "postcss-loader",
+        "sass-loader"
+      ]
       : [
-          "css-hot-loader",
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
-          "sass-loader"
-        ];
+        "css-hot-loader",
+        MiniCssExtractPlugin.loader,
+        "css-loader",
+        "postcss-loader",
+        "sass-loader"
+      ];
   const config = {
     mode:
       process.env.NODE_ENV === ENV_PRODUCTION
@@ -69,10 +69,12 @@ exports.getConfig = function() {
         },
         {
           test: /\.css$/,
+          exclude: /node_modules/,
           use: cssLoader
         },
         {
           test: /\.sass$/,
+          exclude: /node_modules/,
           use: sassLoader
         },
         {
@@ -97,7 +99,11 @@ exports.getConfig = function() {
         "process.package": {
           version: JSON.stringify(packageInfo.version)
         }
-      })
+      }),
+      // new MiniCssExtractPlugin({
+      //   filename: "[name]-[hash].css",
+      //   chunkFilename: "[id].css"
+      // })
     ]
   };
   // if (process.env.NODE_ENV === ENV_PRODUCTION) {

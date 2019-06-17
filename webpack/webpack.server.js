@@ -13,6 +13,7 @@ const path = require("path");
 const webpack = require("webpack");
 const commonWebpack = require("./webpack.common");
 const nodeExternals = require('webpack-node-externals')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const output = {
   path: path.join(__dirname, "../dist"),
@@ -26,5 +27,9 @@ config.entry = path.join(__dirname, "../src/server.js");
 config.target = "node";
 config.output = output;
 config.externals = [nodeExternals()];
+config.plugins.push(new MiniCssExtractPlugin({
+  filename: "/assets/[name][hash].css",
+  chunkFilename: "[id].css"
+}))
 
 module.exports = config;

@@ -19,9 +19,6 @@ const PORT = ENV === "development" ? 8989 : 8989;
 app.use(parser.json()); // parsing application/json
 app.use(parser.urlencoded({ extended: true })); // parsing application/x-www-form-urlencoded
 
-console.log(__dirname);
-console.log(__filename)
-
 // // 设置静态文件目录
 app.use('/dist', express.static(path.join(process.cwd(), "dist"), { maxAge: '30d' }));
 

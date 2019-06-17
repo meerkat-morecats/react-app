@@ -6,14 +6,14 @@
  * Modified By: kangkai (kakcool@qq.com)
  * ----------
  * @author kangkai
- * @description webpack生产环境配置信息 服务端渲染页面
+ * @description webpack生产环境配置信息 客户端渲染页面
  */
 
 const path = require("path");
 // const webpack = require("webpack");
 const commonWebpack = require("./webpack.common");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const output = {
   path: path.join(__dirname, "../dist/assets"),
   publicPath: "/assets/"
@@ -28,4 +28,10 @@ config.optimization = {
   minimizer: [new OptimizeCSSAssetsPlugin()],
   mergeDuplicateChunks: true
 };
+config.plugins.push(
+  new MiniCssExtractPlugin({
+    filename: "[name][hash].css",
+    chunkFilename: "[id].css"
+  })
+)
 module.exports = config;

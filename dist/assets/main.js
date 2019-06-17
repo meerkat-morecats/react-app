@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -604,6 +604,12 @@ module.exports = g;
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -625,7 +631,11 @@ function MyComponent() {
 }
 
 /* harmony default export */ var component = (MyComponent);
+// EXTERNAL MODULE: ./src/views/Home/home.css
+var home = __webpack_require__(8);
+
 // CONCATENATED MODULE: ./src/views/Home/index.js
+
 
 
 
