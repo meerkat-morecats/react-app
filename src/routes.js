@@ -8,3 +8,19 @@
  * @author kangkai
  * @description 前端路由配置
  */
+import React from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import routes from './routeConfig'
+
+const routeConfig = Object.values(routes)
+
+console.log(routeConfig)
+function App() {
+  return <BrowserRouter>
+    <Switch>
+      {routeConfig.map(ele => <Route exact={ele.exact} path={ele.path} component={ele.component} />)}
+    </Switch>
+  </BrowserRouter>
+}
+
+export { App }

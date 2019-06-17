@@ -11,17 +11,21 @@
 ├── node_modules
 ├── scripts 脚本
 │ └── ...
+├── dist 打包后的文件
+│ ├── assets/
+│ └── server.js
 ├── src
 │ ├── views 页面
 │ │ └── ...
 │ ├── components 组件
 │ │ └── ...
-│ ├── dist 打包后的文件
 │ ├── node_utils node 需要的一些工具
-│ ├── public webpack 模板
+│ ├── public webpack 模板 (本地开发环境中使用)
 │ ├── routes.js 前端路由
 │ ├── server.js node 服务端
-│ └── index.js 前端入口
+│ ├── app.js 前端入口
+│ ├── routeConfig.js 路由配置文件
+│ └── ...
 ├── webpack webpack 配置
 │ └── ...
 ├── package.json

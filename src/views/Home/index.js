@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MyComponent from "./component";
 import './home.css';
 
@@ -15,9 +15,9 @@ function Home() {
     console.log(e);
     alert("123123");
   }
-  // useEffect(() => {
-  //   console.log("useEffect");
-  // });
+  useEffect(() => {
+    console.log("useEffect");
+  });
   return (
     <div className="home">
       <span>hello world!</span>

@@ -12,6 +12,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Home } from "./views/Home";
+import { App } from './routes'
 
-
-ReactDOM.hydrate(<Home />, document.getElementById("root"));
+ReactDOM.hydrate(<App />, document.getElementById("root"));

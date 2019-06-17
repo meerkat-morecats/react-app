@@ -1,3 +1,9 @@
 .test{
   background: green;
+  .check{
+    color: grey;
+  }
+  &.abc {
+    color: yellow;
+  }
 }
