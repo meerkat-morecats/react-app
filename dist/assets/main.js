@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -610,6 +610,12 @@ module.exports = g;
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -623,16 +629,22 @@ var react_default = /*#__PURE__*/__webpack_require__.n(react);
 var react_dom = __webpack_require__(2);
 var react_dom_default = /*#__PURE__*/__webpack_require__.n(react_dom);
 
+// EXTERNAL MODULE: ./src/views/Home/test.scss
+var test = __webpack_require__(8);
+
 // CONCATENATED MODULE: ./src/views/Home/component.js
-var React = __webpack_require__(0);
+
+
 
 function MyComponent() {
-  return React.createElement("div", null, "MyComponent");
+  return react_default.a.createElement("div", {
+    className: "test"
+  }, "MyComponent");
 }
 
 /* harmony default export */ var component = (MyComponent);
 // EXTERNAL MODULE: ./src/views/Home/home.css
-var home = __webpack_require__(8);
+var home = __webpack_require__(9);
 
 // CONCATENATED MODULE: ./src/views/Home/index.js
 

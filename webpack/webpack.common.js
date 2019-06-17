@@ -73,7 +73,7 @@ exports.getConfig = function () {
           use: cssLoader
         },
         {
-          test: /\.sass$/,
+          test: /\.scss$/,
           exclude: /node_modules/,
           use: sassLoader
         },
