@@ -11,6 +11,7 @@
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const webpack = require("webpack");
 const packageInfo = require("../package");
 
@@ -100,6 +101,9 @@ exports.getConfig = function () {
           version: JSON.stringify(packageInfo.version)
         }
       }),
+      new ProgressBarPlugin(function (percentage, msg) {
+        console.info((percentage.toFixed(2) * 100) + '%', msg)
+      })
       // new MiniCssExtractPlugin({
       //   filename: "[name]-[hash].css",
       //   chunkFilename: "[id].css"
