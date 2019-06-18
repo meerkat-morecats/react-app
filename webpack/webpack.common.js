@@ -10,7 +10,8 @@
  */
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+// const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const webpack = require("webpack");
 const packageInfo = require("../package");
 
@@ -20,31 +21,31 @@ const ENV_DEVELOPMENT = "development";
 exports.ENV_DEVELOPMENT = ENV_DEVELOPMENT;
 exports.ENV_DEVELOPMENT = ENV_DEVELOPMENT;
 
-exports.getConfig = function() {
+exports.getConfig = function () {
   const cssLoader =
     process.env.NODE_ENV === ENV_PRODUCTION
       ? [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
       : [
-          "css-hot-loader",
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader"
-        ];
+        "css-hot-loader",
+        MiniCssExtractPlugin.loader,
+        "css-loader",
+        "postcss-loader"
+      ];
   const sassLoader =
     process.env.NODE_ENV === ENV_PRODUCTION
       ? [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
-          "sass-loader"
-        ]
+        MiniCssExtractPlugin.loader,
+        "css-loader",
+        "postcss-loader",
+        "sass-loader"
+      ]
       : [
-          "css-hot-loader",
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader",
-          "sass-loader"
-        ];
+        "css-hot-loader",
+        MiniCssExtractPlugin.loader,
+        "css-loader",
+        "postcss-loader",
+        "sass-loader"
+      ];
   const config = {
     mode:
       process.env.NODE_ENV === ENV_PRODUCTION
@@ -53,26 +54,28 @@ exports.getConfig = function() {
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.js$/,
           exclude: /node_modules/,
           use: [
             {
               loader: "babel-loader"
-            },
-            {
-              loader: "eslint-loader",
-              options: {
-                quiet: true
-              }
             }
+            // {
+            //   loader: "eslint-loader",
+            //   options: {
+            //     quiet: true
+            //   }
+            // }
           ]
         },
         {
           test: /\.css$/,
+          exclude: /node_modules/,
           use: cssLoader
         },
         {
-          test: /\.sass$/,
+          test: /\.scss$/,
+          exclude: /node_modules/,
           use: sassLoader
         },
         {
@@ -97,24 +100,31 @@ exports.getConfig = function() {
         "process.package": {
           version: JSON.stringify(packageInfo.version)
         }
+      }),
+      new ProgressBarPlugin(function (percentage, msg) {
+        console.info((percentage.toFixed(2) * 100) + '%', msg)
       })
+      // new MiniCssExtractPlugin({
+      //   filename: "[name]-[hash].css",
+      //   chunkFilename: "[id].css"
+      // })
     ]
   };
-  if (process.env.NODE_ENV === ENV_PRODUCTION) {
-    config.plugins.push(
-      new webpack.BannerPlugin({
-        banner:
-          "react-ssr version : " + packageInfo.version + " , file : [file]"
-      })
-    );
+  // if (process.env.NODE_ENV === ENV_PRODUCTION) {
+  //   config.plugins.push(
+  //     new webpack.BannerPlugin({
+  //       banner:
+  //         "react-ssr version : " + packageInfo.version + " , file : [file]"
+  //     })
+  //   );
 
-    config.optimization = {
-      // minimize: process.env.NODE_ENV === ENV_PRODUCTION,
-      minimizer: [new OptimizeCSSAssetsPlugin()],
-      mergeDuplicateChunks: true
-    };
-  } else {
-    config.devtool = "cheap-module-eval-source-map";
-  }
+  //   config.optimization = {
+  //     // minimize: process.env.NODE_ENV === ENV_PRODUCTION,
+  //     minimizer: [new OptimizeCSSAssetsPlugin()],
+  //     mergeDuplicateChunks: true
+  //   };
+  // } else {
+  //   config.devtool = "cheap-module-eval-source-map";
+  // }
   return config;
 };

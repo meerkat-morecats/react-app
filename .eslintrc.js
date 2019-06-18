@@ -19,7 +19,7 @@ module.exports = {
   plugins: ["react"],
   rules: {
     // off=0, warn=1, error=2, 如果是数组, 第二项表示参数option
-    indent: [4, 2], // 控制缩进为2
+    indent: [2, 2], // 控制缩进为2
     eqeqeq: 1, // 警告使用全等
     quotes: [2, "single"], //单引号
     "no-console": 0, //不禁用console
@@ -57,7 +57,7 @@ module.exports = {
     "react/jsx-closing-bracket-location": 1, //在JSX中验证右括号位置
     "react/jsx-curly-spacing": [2, { when: "never", children: true }], //在JSX属性和表达式中加强或禁止大括号内的空格。
     // "react/jsx-indent": [2, 4], // 语法缩进控制
-    "react/jsx-indent-props": [2, 4], //验证JSX中的props缩进是否为2个
+    "react/jsx-indent-props": [2, 2], //验证JSX中的props缩进是否为2个
     "react/jsx-key": 2, //在数组或迭代器中验证JSX具有key属性
     "react/jsx-max-props-per-line": [1, { maximum: 1 }], // 限制JSX中单行上的props的最大数量
     "react/jsx-no-bind": 0, //JSX中不允许使用箭头函数和bind

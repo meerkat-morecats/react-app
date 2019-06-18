@@ -8,3 +8,21 @@
  * @author kangkai
  * @description webpack开发环境的配置信息
  */
+
+const commonWebpack = require('./webpack.common');
+const path = require('path');
+const config = commonWebpack.getConfig();
+
+config.entry = path.join(__dirname, '../src/app.js');
+config.target = 'web';
+config.output = {
+  path: path.join(__dirname, '../dist/assets'),
+  publicPath: '/assets/',
+};
+config.devtool = 'inline-source-map';
+config.devServer = {
+  host: '127.0.0.1',
+  port: 3000,
+};
+
+module.exports = config;

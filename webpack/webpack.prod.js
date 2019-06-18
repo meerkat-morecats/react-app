@@ -6,5 +6,32 @@
  * Modified By: kangkai (kakcool@qq.com)
  * ----------
  * @author kangkai
- * @description webpack生产环境配置信息
+ * @description webpack生产环境配置信息 客户端渲染页面
  */
+
+const path = require("path");
+// const webpack = require("webpack");
+const commonWebpack = require("./webpack.common");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const output = {
+  path: path.join(__dirname, "../dist/assets"),
+  publicPath: "/assets/"
+};
+
+const config = commonWebpack.getConfig();
+config.entry = path.join(__dirname, "../src/app.js");
+config.target = "web";
+config.output = output;
+config.optimization = {
+  // minimize: process.env.NODE_ENV === ENV_PRODUCTION,
+  minimizer: [new OptimizeCSSAssetsPlugin()],
+  mergeDuplicateChunks: true
+};
+config.plugins.push(
+  new MiniCssExtractPlugin({
+    filename: "[name][hash].css",
+    chunkFilename: "[id].css"
+  })
+)
+module.exports = config;
