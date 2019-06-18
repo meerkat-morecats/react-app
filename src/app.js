@@ -9,9 +9,8 @@
  * @description 浏览器渲染入口
  */
 
-import React from "react";
-import ReactDOM from "react-dom";
-import { Home } from "./views/Home";
-import { App } from './routes'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { App } from './routes';
 
-ReactDOM.hydrate(<App />, document.getElementById("root"));
+ReactDOM.hydrate(<App />, document.getElementById('root'));
