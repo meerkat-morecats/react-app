@@ -1,2 +1,2 @@
 export NODE_ENV=development
-webpack --config = webpack/webpack.dev.js --progess --quiet
+webpack-dev-server --config webpack/webpack.dev.js 

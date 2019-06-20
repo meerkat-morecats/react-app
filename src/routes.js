@@ -14,7 +14,6 @@ import routes from './routeConfig'
 
 const routeConfig = Object.values(routes)
 
-console.log(routeConfig)
 function App() {
   return <BrowserRouter>
     <Switch>

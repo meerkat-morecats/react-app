@@ -10,19 +10,36 @@
  */
 
 const commonWebpack = require('./webpack.common');
-const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { clientEntry, templatePath, clientOutput } = require('./paths')
+
 const config = commonWebpack.getConfig();
 
-config.entry = path.join(__dirname, '../src/app.js');
+config.mode = 'development'
+config.entry = clientEntry;
 config.target = 'web';
 config.output = {
-  path: path.join(__dirname, '../dist/assets'),
-  publicPath: '/assets/',
+  path: clientOutput,
 };
+config.stats = 'errors-only'
 config.devtool = 'inline-source-map';
 config.devServer = {
-  host: '127.0.0.1',
+  contentBase: clientEntry,
   port: 3000,
 };
+
+config.plugins.push(
+  new MiniCssExtractPlugin({
+    filename: "[name][hash].css",
+    chunkFilename: "[id].css"
+  })
+)
+config.plugins.push(
+  new HtmlWebpackPlugin({
+    filename: 'index.html',
+    template: templatePath
+  })
+)
 
 module.exports = config;
