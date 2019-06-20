@@ -8,18 +8,30 @@
  * @author kangkai
  * @description 前端路由配置
  */
-import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import routes from './routeConfig'
-
-const routeConfig = Object.values(routes)
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import routes from './routeConfig';
+import Nav from './components/Nav';
+const routeConfig = Object.values(routes);
 
 function App() {
-  return <BrowserRouter>
-    <Switch>
-      {routeConfig.map(ele => <Route key={ele.path} exact={ele.exact} path={ele.path} component={ele.component} />)}
-    </Switch>
-  </BrowserRouter>
+  return (
+    <BrowserRouter>
+      <Nav />
+      <div className="main-content">
+        <Switch>
+          {routeConfig.map(ele => (
+            <Route
+              key={ele.path}
+              exact={ele.exact}
+              path={ele.path}
+              component={ele.component}
+            />
+          ))}
+        </Switch>
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export { App }
+export { App };
