@@ -17,7 +17,7 @@ const routeConfig = Object.values(routes)
 function App() {
   return <BrowserRouter>
     <Switch>
-      {routeConfig.map(ele => <Route exact={ele.exact} path={ele.path} component={ele.component} />)}
+      {routeConfig.map(ele => <Route key={ele.path} exact={ele.exact} path={ele.path} component={ele.component} />)}
     </Switch>
   </BrowserRouter>
 }

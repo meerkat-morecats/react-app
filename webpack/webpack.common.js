@@ -104,9 +104,7 @@ exports.getConfig = function () {
           version: JSON.stringify(packageInfo.version)
         }
       }),
-      new ProgressBarPlugin(function (percentage, msg) {
-        console.info((percentage.toFixed(2) * 100) + '%', msg)
-      })
+      new ProgressBarPlugin()
       // new MiniCssExtractPlugin({
       //   filename: "[name]-[hash].css",
       //   chunkFilename: "[id].css"

@@ -7,7 +7,7 @@ module.exports = function (pageName) {
   const pagePath = path.join(cwd, `src/pages/${pageName}`)
   const stat = fs.statSync(pagePath);
   if (stat.isDirectory()) {
-    console.log('this file is already exist! please try again.')
+    console.info('this file is already exist! please try again.')
     return;
   }
 
@@ -22,7 +22,14 @@ module.exports = function (pageName) {
       console.log(err);
       return false;
     }
-    console.log('write file success !')
+    console.info('write jsx file success !')
+  })
+  fs.writeFileSync(pagePath + '/index.scss', targetPage, function (err) {
+    if (err) {
+      console.log(err);
+      return false;
+    }
+    console.info('write scss file success !')
   })
 }
 

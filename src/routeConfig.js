@@ -6,6 +6,11 @@ module.exports = {
     component: Home,
     exact: true,
     path: '/', // 前端路由规则
+  },
+  '/abc': {
+    component: Home,
+    exact: true,
+    path: '/abc', // 前端路由规则
   }
 }
 

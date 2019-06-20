@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { getInitialState, getProps } from '../base'
+import './index.scss'
 
 function PageName(props) {
   const [data, setData] = useState(getProps(props, 'data', {}));

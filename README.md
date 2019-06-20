@@ -1,6 +1,7 @@
 # react hooks ssr 工程化的项目
 
-node v10.15
+- node v10.15
+- 通过我的个人网站将他落地
 
 ## 目录结构
 
