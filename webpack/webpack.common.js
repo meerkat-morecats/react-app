@@ -51,10 +51,13 @@ exports.getConfig = function () {
       process.env.NODE_ENV === ENV_PRODUCTION
         ? ENV_PRODUCTION
         : ENV_DEVELOPMENT,
+    resolve: {
+      extensions: [".js", ".jsx", ".json"]
+    },
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: [
             {

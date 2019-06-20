@@ -9,11 +9,13 @@
     "dev:server": "cross-env NODE_ENV=development nodemon --exec babel-node ./dist/server.js",
     "debug-server": "cross-env NODE_ENV=development nodemon --exec babel-node --debug ./server/bin/www",
     "build": "sh ./scripts/build.sh",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cli": "node cli/index.js -p page"
   },
   "author": "kakcool@qq.com",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "connect-history-api-fallback": "^1.6.0",
     "express": "^4.16.4",
@@ -34,6 +36,7 @@
     "@babel/register": "^7.4.4",
     "autoprefixer": "^9.6.0",
     "babel-loader": "^8.0.6",
+    "commander": "^2.20.0",
     "cross-env": "^5.2.0",
     "css-hot-loader": "^1.4.4",
     "css-loader": "^2.1.1",

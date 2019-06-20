@@ -1,5 +1,7 @@
 # react hooks ssr 工程化的项目
 
+node v10.15
+
 ## 目录结构
 
 ```
@@ -37,9 +39,11 @@
 - [ ] 开发前端界面 hooks，实现多个页面，每个页面依赖多个组件
 - [ ] express 文件压缩、打包
 - [ ] express 缓存设计
-- [ ] webpack + 单个页面的 ssr
-- [ ] webpack + 多个页面的 ssr
-- [ ] 脚手架、实现页面组件的创建
+- [ ] 脚手架、实现页面组件的创建(产生page/component，page包含getInitialProps)
 - [ ] 与 next 框架对比
 - [ ] 添加测试
 - [ ] typscript
+
+## QUESTION
+
+- 对于嵌套比较多的路由层数，如何在服务端渲染确定的页面

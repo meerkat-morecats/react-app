@@ -1,5 +1,5 @@
 // 服务器入口
-const { Home } = require('./views/Home');
+const { Home } = require('./pages/Home');
 
 module.exports = {
   '/': {
