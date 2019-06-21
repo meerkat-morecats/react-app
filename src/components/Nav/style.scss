@@ -1,13 +1,17 @@
 .main-nav {
+  padding-left: 20px;
   list-style: none;
   &__item {
     display: inline-block;
     padding: 0 12px 0;
     &__link {
       font-size: 18px;
-      color: #66a0c0;
+      color: #cccccc;
       &:visited {
-        color: #044e75;
+        color:#cccccc;
+      }
+      &.active{
+        color: #336699;
       }
     }
   }

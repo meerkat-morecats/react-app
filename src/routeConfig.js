@@ -1,16 +1,16 @@
 // 服务器入口
 const { Home } = require('./pages/Home');
-
+const {List} = require('./pages/List')
 module.exports = {
   '/': {
     component: Home,
     exact: true,
     path: '/', // 前端路由规则
   },
-  '/abc': {
-    component: Home,
+  '/article': {
+    component: List,
     exact: true,
-    path: '/abc', // 前端路由规则
+    path: '/article/:id', // 前端路由规则
   }
 }
 

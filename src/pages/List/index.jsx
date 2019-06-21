@@ -3,19 +3,23 @@ import axios from 'axios';
 import { getInitialState, getProps } from '../base'
 import './style.scss'
 
-function PageName(props) {
+function List(props) {
   const [data, setData] = useState(getProps(props, 'data', {}));
-  getInitialState(props, PageName, { data: setData });
+  getInitialState(props, List, { data: setData });
   return <div>
+    <div>
+      list page
+    </div>
     {/* something to do */}
   </div>
 }
 
-PageName.getInitialProps = async () => {
-  const api = '';
-  // 请求数据
-  const data = await axios(api);
+List.getInitialProps = async () => {
+  // const api = '';
+  // // 请求数据
+  // const data = await axios(api);
+  const data = {}
   return { data }
 }
 
-export { PageName };
+export { List };

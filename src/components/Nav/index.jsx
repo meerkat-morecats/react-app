@@ -1,27 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
-const activeStyle = {
-  fontWeight: 'bold',
-  color: '#d00000',
-};
 
 function Nav() {
   const list = [
     {
       to: '/',
-      activeStyle: activeStyle,
       exact: true,
       content: '首页',
     },
-    {
-      to: '/list',
-      activeStyle: activeStyle,
-      content: '文章列表',
-    },
+    // {
+    //   to: '/list',
+    //   content: '文章列表',
+    // },
     {
       to: '/edit',
-      activeStyle: activeStyle,
       content: '编辑',
     },
   ];
@@ -38,4 +31,4 @@ function Nav() {
   );
 }
 
-export default Nav;
+export default {Nav};

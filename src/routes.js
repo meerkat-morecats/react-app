@@ -11,14 +11,11 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import routes from './routeConfig';
-import Nav from './components/Nav';
 const routeConfig = Object.values(routes);
 
 function App() {
   return (
     <BrowserRouter>
-      <Nav />
-      <div className="main-content">
         <Switch>
           {routeConfig.map(ele => (
             <Route
@@ -29,7 +26,6 @@ function App() {
             />
           ))}
         </Switch>
-      </div>
     </BrowserRouter>
   );
 }
