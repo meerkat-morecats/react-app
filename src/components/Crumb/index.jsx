@@ -9,7 +9,8 @@ import './style.scss'
  * @param {Array} tags
  * @param {String} children
  */
-function Crumb({ list = [], tags = [], children = 'ls -lR | grep "^-"' }) {
+// ls -lR | grep "/$" 展示文件夹
+function Crumb({ list = [], tags = [], children = 'ls -R | grep ".md"' }) {
   // const [data, setData] = useState({});
   useTest();
   return <ul className="crumb-wrap">
@@ -20,6 +21,7 @@ function Crumb({ list = [], tags = [], children = 'ls -lR | grep "^-"' }) {
         <NavLink className="crumb-wrap__item__link" {...item}>{item.title}</NavLink>
       </li>
     </React.Fragment>)}
+    {/* @todo 加 tags */}
     <li className="crumb-wrap__item yellow">$</li>
     <li className="crumb-wrap__item cmd">{children}</li>
   </ul>
