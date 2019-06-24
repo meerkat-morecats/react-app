@@ -1,0 +1,36 @@
+@import '../../common/scss/colors.scss';
+.crumb-wrap{
+  padding-left: 0px;
+  margin: 0;
+  list-style: none;
+  &__item {
+    display: inline-block;
+    padding: 0px 1px;
+    line-height: 18px;
+    &.yellow{
+      color: $yellow;
+      padding-left: 8px;
+    }
+    &.host{
+      color: $green;
+      padding-right: 12px;
+    }
+    &.cmd{
+      padding-left: 8px;
+    }
+    &.blue{
+      color: $blue1;
+    }
+    &__link {
+      text-decoration: none;
+      padding: 0px;
+      color: $blue1;
+      &:visited {
+        color:unset;
+      }
+      &.active{
+        color: $blue1;
+      }
+    }
+  }
+}

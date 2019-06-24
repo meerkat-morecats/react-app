@@ -8,6 +8,17 @@
   margin-left: auto;
   margin-right: auto;
   padding: 4px;
-  background-color: $blue2;
+  background-color: $black;
   box-sizing: border-box;
+  &__list{
+    a{
+      color: $blue1;
+      &:active{
+        color: $blue1;
+      }
+      &:visited{
+        color: $blue3;
+      }
+    }
+  }
 }
