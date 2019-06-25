@@ -10,7 +10,15 @@
  */
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import routes from './routeConfig';
+// import routes from './routeConfig';
+const { Home } = require('./pages/Home');
+const routes = {
+  '/': {
+    component: Home,
+    exact: true,
+    path: '/', // 前端路由规则
+  },
+}
 const routeConfig = Object.values(routes);
 
 function App() {
@@ -30,4 +38,4 @@ function App() {
   );
 }
 
-export { App };
+export { App ,routes};

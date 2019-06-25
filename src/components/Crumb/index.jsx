@@ -1,5 +1,6 @@
-import React, { useState ,useEffect} from "react";
-import { NavLink } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
+import { Tag } from '../Tag'
 import './style.scss'
 
 
@@ -10,27 +11,25 @@ import './style.scss'
  * @param {String} children
  */
 // ls -lR | grep "/$" 展示文件夹
-function Crumb({ list = [], tags = [], children = 'ls -R | grep ".md"' }) {
+function Crumb({ title, tagName }) {
   // const [data, setData] = useState({});
   useTest();
   return <ul className="crumb-wrap">
-    <li className="crumb-wrap__item host">visitor@{location.origin}</li>
-    {list.map(item => <React.Fragment key={item.to}>
-      <li className="crumb-wrap__item blue">/</li>
-      <li className="crumb-wrap__item blue">
-        <NavLink className="crumb-wrap__item__link" {...item}>{item.title}</NavLink>
-      </li>
-    </React.Fragment>)}
-    {/* @todo 加 tags */}
-    <li className="crumb-wrap__item yellow">$</li>
-    <li className="crumb-wrap__item cmd">{children}</li>
+    <li className="crumb-wrap__item yellow">>></li>
+    <li className="crumb-wrap__item" >{title}</li>
+    <li className="crumb-wrap__item yellow">>></li>
+    {tagName && <React.Fragment>
+      <Tag><span className="crumb-wrap__item__tag">{tagName}</span></Tag>
+      <li className="crumb-wrap__item yellow">>></li>
+    </React.Fragment>
+    }
   </ul>
 }
 
-function useTest(){
-  const [data,setData]=useState(0);
+function useTest() {
+  const [data, setData] = useState(0);
   console.log('useTest')
-  useEffect(()=>{
+  useEffect(() => {
     setData(1);
   })
   return data;

@@ -5,32 +5,21 @@
   list-style: none;
   &__item {
     display: inline-block;
-    padding: 0px 1px;
+    padding: 0px 4px;
     line-height: 18px;
     &.yellow{
       color: $yellow;
-      padding-left: 8px;
     }
-    &.host{
-      color: $green;
-      padding-right: 12px;
-    }
-    &.cmd{
-      padding-left: 8px;
-    }
-    &.blue{
-      color: $blue1;
-    }
-    &__link {
+    &__tag{
       text-decoration: none;
       padding: 0px;
       color: $blue1;
       &:visited {
-        color:unset;
+        color:$blue1;
       }
       &.active{
         color: $blue1;
-      }
+      }  
     }
   }
 }

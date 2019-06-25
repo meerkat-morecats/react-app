@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { getInitialState, getProps } from '../base';
 import { Link } from 'react-router-dom'
 import { Crumb } from '../../components/Crumb'
+import { LazyList } from '../../components/LazyList'
+import { Tag } from '../../components/Tag'
 import './style.scss';
 
 
@@ -13,27 +15,20 @@ import './style.scss';
 // 做的像目录一样
 function Home(props) {
   const [data, setData] = useState(getProps(props, 'data', []));
-  const [crumbs, setCrumbs] = useState([
-    {
-      title: '首页',
-      to: '/',
-      exact: true,
-    },
-    // {
-    //   title: '标签',
-    //   to: '/tag',
-    //   exact: true,
-    // }
-  ]);
-  getInitialState(props, Home, { data: setData });
-  useEffect(() => {
-    // console.log(props)
-  })
+  const [tags, setTags] = useState(getProps(props, 'tags', []))
+  getInitialState(props, Home, { data: setData, tags: setTags });
+  // getInitialState(props, Home, { tags: setTags });
+  console.log(tags)
   return <div className="home-wrapper">
-    <Crumb list={crumbs} ></Crumb>
-    <section className="home-wrapper__list">
-        <Link to="/">title</Link>
+    <Crumb title="标签列表" ></Crumb>
+    <section className="home-wrapper-tags">
+      {tags.map(({ tagName, ...tag }) =>
+        <Tag key={tagName}><Link className="home-wrapper-tags__link" {...tag}>{tagName}</Link></Tag>
+      )}
     </section>
+
+    <Crumb title="文章列表" ></Crumb>
+    <LazyList data={data} />
   </div>;
 }
 
@@ -41,8 +36,39 @@ Home.getInitialProps = async () => {
   // const api = '';
   // // 请求数据
   // const data = await axios(api);
-  const data = []
-  return { data };
+  const data = [{
+    to: '/abc',
+    title: '文章1',
+    date: '2018-12-12 12:22:22'
+  },
+  {
+    to: '/abc',
+    title: '文章1',
+    date: '2018-12-12 12:22:22'
+
+  },
+  {
+    to: '/abc',
+    title: '文章1',
+    date: '2018-12-12 12:22:22'
+  },
+  {
+    to: '/abc',
+    title: '文章1',
+    date: '2018-12-12 12:22:22'
+  },
+  ];
+  const tags = [
+    {
+      to: '/node',
+      tagName: 'node'
+    },
+    {
+      to: '/react',
+      tagName: 'react'
+    }
+  ]
+  return { data, tags };
 };
 
 export { Home };

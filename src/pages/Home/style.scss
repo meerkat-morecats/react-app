@@ -10,15 +10,18 @@
   padding: 4px;
   background-color: $black;
   box-sizing: border-box;
-  &__list{
-    a{
-      color: $blue1;
-      &:active{
+
+  .home-wrapper-tags{
+    &__link{
+      text-decoration: none;
+        padding: 0px;
         color: $blue1;
-      }
-      &:visited{
-        color: $blue3;
-      }
+        &:visited {
+          color:$blue1;
+        }
+        &.active{
+          color: $blue1;
+        }  
     }
-  }
+  } 
 }

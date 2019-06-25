@@ -6,7 +6,7 @@ const logger = require("./node_utils/logger");
 // const history = require("connect-history-api-fallback");
 const insertStatic = require('./node_utils/insertStatic')
 const parser = require("body-parser");
-const routes = require('./routeConfig');
+const { routes } = require('./routes');
 
 // const favicon = require("serve-favicon");
 
@@ -29,7 +29,7 @@ app.use('/api', (req, res) => {
 })
 // 根据路由判断渲染那个页面
 app.get('/', (req, res) => {
-  console.log('request comming',req.path,req.url)
+  console.log('request comming', req.path, req.url)
   const Application = routes[req.path]['component'];
   const options = {
     ssrHtml: ReactDOMServer.renderToString(<Application test='123123' />)
