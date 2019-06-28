@@ -12,8 +12,7 @@ import './style.scss'
  */
 // ls -lR | grep "/$" 展示文件夹
 function Crumb({ title, tagName }) {
-  // const [data, setData] = useState({});
-  useTest();
+  
   return <ul className="crumb-wrap">
     <li className="crumb-wrap__item yellow">>></li>
     <li className="crumb-wrap__item" >{title}</li>
@@ -26,13 +25,5 @@ function Crumb({ title, tagName }) {
   </ul>
 }
 
-function useTest() {
-  const [data, setData] = useState(0);
-  console.log('useTest')
-  useEffect(() => {
-    setData(1);
-  })
-  return data;
-}
 
 export { Crumb }

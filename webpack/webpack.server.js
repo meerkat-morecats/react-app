@@ -26,6 +26,7 @@ const config = commonWebpack.getConfig();
 config.entry = path.join(__dirname, "../src/server.js");
 config.target = "node";
 config.output = output;
+config.stats = 'errors-only'
 config.externals = [nodeExternals()];
 config.plugins.push(new MiniCssExtractPlugin({
   filename: "/assets/[name][hash].css",

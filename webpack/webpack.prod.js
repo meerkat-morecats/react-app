@@ -16,17 +16,23 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const output = {
   path: path.join(__dirname, "../dist/assets"),
-  publicPath: "/assets/"
+  publicPath: "/assets/",
+  chunkFilename: '[name].bundle.js',
+
 };
 
 const config = commonWebpack.getConfig();
 config.entry = path.join(__dirname, "../src/app.js");
 config.target = "web";
+config.stats = 'errors-only'
 config.output = output;
 config.optimization = {
   // minimize: process.env.NODE_ENV === ENV_PRODUCTION,
   minimizer: [new OptimizeCSSAssetsPlugin()],
-  mergeDuplicateChunks: true
+  mergeDuplicateChunks: true,
+  // splitChunks: {
+  //   chunks: 'all'
+  // }
 };
 config.plugins.push(
   new MiniCssExtractPlugin({
