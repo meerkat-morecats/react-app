@@ -10,22 +10,22 @@
  */
 
 const commonWebpack = require('./webpack.common');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { clientEntry, templatePath, clientOutput } = require('./paths')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-// const path = require('path') 
-const webpack = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { clientEntry, templatePath, clientOutput, } = require('./paths');
+const { CleanWebpackPlugin, } = require('clean-webpack-plugin');
+// const path = require('path')
+const webpack = require('webpack');
 
 const config = commonWebpack.getConfig();
 
-config.mode = 'development'
+config.mode = 'development';
 config.entry = clientEntry;
 config.target = 'web';
 config.output = {
   path: clientOutput,
 };
-config.stats = 'errors-only'
+config.stats = 'errors-only';
 config.devtool = 'inline-source-map';
 config.devServer = {
   // contentBase: clientEntry,
@@ -35,30 +35,37 @@ config.devServer = {
   compress: true,
   host: '0.0.0.0',
   port: 3000,
+  after:function (app,server) {
+    console.log(app);
+    /**
+     * @todo 增加 服务端渲染页面
+     */
+
+  },
 };
 
 config.plugins.push(
   new MiniCssExtractPlugin({
-    filename: "[name][hash].css",
-    chunkFilename: "[id].css"
+    filename: '[name][hash].css',
+    chunkFilename: '[id].css',
   })
-)
+);
 config.plugins.push(
   new HtmlWebpackPlugin({
     filename: 'index.html',
-    template: templatePath
+    template: templatePath,
   })
-)
+);
 
 config.plugins.push(
   new CleanWebpackPlugin()
-)
+);
 
 config.plugins.push(
   new webpack.HotModuleReplacementPlugin()
-)
+);
 config.plugins.push(
   new webpack.NamedModulesPlugin()
-)
+);
 
 module.exports = config;

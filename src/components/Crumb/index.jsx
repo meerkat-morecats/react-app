@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom'
-import { Tag } from '../Tag'
-import './style.scss'
+import React, { useState, useEffect, } from 'react';
+import { Link, } from 'react-router-dom';
+import { Tag, } from '../Tag';
+import './style.scss';
 
 
 /**
@@ -10,20 +10,20 @@ import './style.scss'
  * @param {Array} tags
  * @param {String} children
  */
-// ls -lR | grep "/$" 展示文件夹
-function Crumb({ title, tagName }) {
-  
+
+function Crumb({ title, tagName, }) {
+
   return <ul className="crumb-wrap">
     <li className="crumb-wrap__item yellow">>></li>
     <li className="crumb-wrap__item" >{title}</li>
     <li className="crumb-wrap__item yellow">>></li>
-    {tagName && <React.Fragment>
+    {!!tagName && <React.Fragment>
       <Tag><span className="crumb-wrap__item__tag">{tagName}</span></Tag>
       <li className="crumb-wrap__item yellow">>></li>
     </React.Fragment>
     }
-  </ul>
+  </ul>;
 }
 
 
-export { Crumb }
+export { Crumb, };

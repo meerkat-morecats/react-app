@@ -1,6 +1,11 @@
 // 服务器入口
 const { Home, } = require('./pages/Home');
 module.exports = {
+  '/list': {
+    component: Home,
+    exact: true,
+    path: '/list', // 前端路由规则
+  },
   '/': {
     component: Home,
     exact: true,

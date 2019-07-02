@@ -9,26 +9,26 @@
  * @description webpack生产环境配置信息 客户端渲染页面
  */
 
-const path = require("path");
+const path = require('path');
 // const webpack = require("webpack");
-const commonWebpack = require("./webpack.common");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const commonWebpack = require('./webpack.common');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const output = {
-  path: path.join(__dirname, "../dist/assets"),
-  publicPath: "/assets/",
+  path: path.join(__dirname, '../dist/assets'),
+  publicPath: '/assets/',
   chunkFilename: '[name].bundle.js',
 
 };
 
 const config = commonWebpack.getConfig();
-config.entry = path.join(__dirname, "../src/app.js");
-config.target = "web";
-config.stats = 'errors-only'
+config.entry = path.join(__dirname, '../src/app.js');
+config.target = 'web';
+config.stats = 'errors-only';
 config.output = output;
 config.optimization = {
   // minimize: process.env.NODE_ENV === ENV_PRODUCTION,
-  minimizer: [new OptimizeCSSAssetsPlugin()],
+  minimizer: [new OptimizeCSSAssetsPlugin(),],
   mergeDuplicateChunks: true,
   // splitChunks: {
   //   chunks: 'all'
@@ -36,8 +36,8 @@ config.optimization = {
 };
 config.plugins.push(
   new MiniCssExtractPlugin({
-    filename: "[name][hash].css",
-    chunkFilename: "[id].css"
+    filename: '[name][hash].css',
+    chunkFilename: '[id].css',
   })
-)
+);
 module.exports = config;

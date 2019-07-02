@@ -9,14 +9,14 @@
  * @description webpack公共的配置信息
  */
 
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const ProgressBarPlugin = require('progress-bar-webpack-plugin')
-const webpack = require("webpack");
-const packageInfo = require("../package");
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const webpack = require('webpack');
+const packageInfo = require('../package');
 
-const ENV_PRODUCTION = "production";
-const ENV_DEVELOPMENT = "development";
+const ENV_PRODUCTION = 'production';
+const ENV_DEVELOPMENT = 'development';
 
 exports.ENV_DEVELOPMENT = ENV_DEVELOPMENT;
 exports.ENV_DEVELOPMENT = ENV_DEVELOPMENT;
@@ -24,27 +24,27 @@ exports.ENV_DEVELOPMENT = ENV_DEVELOPMENT;
 exports.getConfig = function () {
   const cssLoader =
     process.env.NODE_ENV === ENV_PRODUCTION
-      ? [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"]
+      ? [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader',]
       : [
-        "css-hot-loader",
+        'css-hot-loader',
         MiniCssExtractPlugin.loader,
-        "css-loader",
-        "postcss-loader"
+        'css-loader',
+        'postcss-loader',
       ];
   const sassLoader =
     process.env.NODE_ENV === ENV_PRODUCTION
       ? [
         MiniCssExtractPlugin.loader,
-        "css-loader",
-        "postcss-loader",
-        "sass-loader"
+        'css-loader',
+        'postcss-loader',
+        'sass-loader',
       ]
       : [
-        "css-hot-loader",
+        'css-hot-loader',
         MiniCssExtractPlugin.loader,
-        "css-loader",
-        "postcss-loader",
-        "sass-loader"
+        'css-loader',
+        'postcss-loader',
+        'sass-loader',
       ];
   const config = {
     mode:
@@ -52,7 +52,7 @@ exports.getConfig = function () {
         ? ENV_PRODUCTION
         : ENV_DEVELOPMENT,
     resolve: {
-      extensions: [".js", ".jsx", ".json"]
+      extensions: ['.js', '.jsx', '.json',],
     },
     module: {
       rules: [
@@ -61,55 +61,55 @@ exports.getConfig = function () {
           exclude: /node_modules/,
           use: [
             {
-              loader: "babel-loader"
-            }
+              loader: 'babel-loader',
+            },
             // {
-            //   loader: "eslint-loader",
+            //   loader: 'eslint-loader',
             //   options: {
-            //     quiet: true
-            //   }
-            // }
-          ]
+            //     quiet: true,
+            //   },
+            // },
+          ],
         },
         {
           test: /\.css$/,
           exclude: /node_modules/,
-          use: cssLoader
+          use: cssLoader,
         },
         {
           test: /\.scss$/,
           exclude: /node_modules/,
-          use: sassLoader
+          use: sassLoader,
         },
         {
           test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-          use: ["file-loader"]
+          use: ['file-loader',],
         },
         {
           test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-          use: ["url-loader"]
+          use: ['url-loader',],
         },
         {
           test: /\.(jpe?g|png|gif|svg|ico)$/i,
-          use: ["file-loader", "image-webpack-loader"]
-        }
-      ]
+          use: ['file-loader', 'image-webpack-loader',],
+        },
+      ],
     },
     plugins: [
       new webpack.DefinePlugin({
-        "process.env": {
-          NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+        'process.env': {
+          NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         },
-        "process.package": {
-          version: JSON.stringify(packageInfo.version)
-        }
+        'process.package': {
+          version: JSON.stringify(packageInfo.version),
+        },
       }),
-      new ProgressBarPlugin()
+      new ProgressBarPlugin(),
       // new MiniCssExtractPlugin({
       //   filename: "[name]-[hash].css",
       //   chunkFilename: "[id].css"
       // })
-    ]
+    ],
   };
   // if (process.env.NODE_ENV === ENV_PRODUCTION) {
   //   config.plugins.push(
