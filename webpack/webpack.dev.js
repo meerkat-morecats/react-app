@@ -12,7 +12,7 @@
 const commonWebpack = require('./webpack.common');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { clientEntry, templatePath, clientOutput, } = require('./paths');
+const { clientEntry, templatePath, clientOutput, } = require('./PATH');
 const { CleanWebpackPlugin, } = require('clean-webpack-plugin');
 // const path = require('path')
 const webpack = require('webpack');
@@ -35,12 +35,11 @@ config.devServer = {
   compress: true,
   host: '0.0.0.0',
   port: 3000,
-  after:function (app,server) {
+  after: function(app, server) {
     console.log(app);
     /**
      * @todo 增加 服务端渲染页面
      */
-
   },
 };
 
@@ -57,15 +56,9 @@ config.plugins.push(
   })
 );
 
-config.plugins.push(
-  new CleanWebpackPlugin()
-);
+config.plugins.push(new CleanWebpackPlugin());
 
-config.plugins.push(
-  new webpack.HotModuleReplacementPlugin()
-);
-config.plugins.push(
-  new webpack.NamedModulesPlugin()
-);
+config.plugins.push(new webpack.HotModuleReplacementPlugin());
+config.plugins.push(new webpack.NamedModulesPlugin());
 
 module.exports = config;
