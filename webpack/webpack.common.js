@@ -17,40 +17,38 @@ const packageInfo = require('../package');
 
 const ENV_PRODUCTION = 'production';
 const ENV_DEVELOPMENT = 'development';
+const IS_PRD = process.env.NODE_ENV.trim() === ENV_PRODUCTION;
 
 exports.ENV_DEVELOPMENT = ENV_DEVELOPMENT;
 exports.ENV_PRODUCTION = ENV_PRODUCTION;
 
-exports.getConfig = function () {
-  const cssLoader =
-    process.env.NODE_ENV === ENV_PRODUCTION
-      ? [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader',]
-      : [
-        'css-hot-loader',
-        MiniCssExtractPlugin.loader,
-        'css-loader',
-        'postcss-loader',
-      ];
-  const sassLoader =
-    process.env.NODE_ENV === ENV_PRODUCTION
-      ? [
-        MiniCssExtractPlugin.loader,
-        'css-loader',
-        'postcss-loader',
-        'sass-loader',
-      ]
-      : [
-        'css-hot-loader',
-        MiniCssExtractPlugin.loader,
-        'css-loader',
-        'postcss-loader',
-        'sass-loader',
-      ];
+exports.IS_PRD = IS_PRD;
+
+exports.getConfig = function() {
+  const cssLoader = IS_PRD
+    ? [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader',]
+    : [
+      'css-hot-loader',
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      'postcss-loader',
+    ];
+  const sassLoader = IS_PRD
+    ? [
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      'postcss-loader',
+      'sass-loader',
+    ]
+    : [
+      'css-hot-loader',
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      'postcss-loader',
+      'sass-loader',
+    ];
   const config = {
-    mode:
-      process.env.NODE_ENV === ENV_PRODUCTION
-        ? ENV_PRODUCTION
-        : ENV_DEVELOPMENT,
+    mode: IS_PRD ? ENV_PRODUCTION : ENV_DEVELOPMENT,
     resolve: {
       extensions: ['.js', '.jsx', '.json',],
     },
@@ -105,13 +103,13 @@ exports.getConfig = function () {
         },
       }),
       new ProgressBarPlugin(),
-      // new MiniCssExtractPlugin({
-      //   filename: "[name]-[hash].css",
-      //   chunkFilename: "[id].css"
-      // })
+      new MiniCssExtractPlugin({
+        filename: IS_PRD ? '[name].[hash].css' : '[name].css',
+        chunkFilename: IS_PRD ? '[id].[hash].css' : '[id].css',
+      }),
     ],
   };
-  // if (process.env.NODE_ENV === ENV_PRODUCTION) {
+  // if (IS_PRD) {
   //   config.plugins.push(
   //     new webpack.BannerPlugin({
   //       banner:
@@ -120,7 +118,7 @@ exports.getConfig = function () {
   //   );
 
   //   config.optimization = {
-  //     // minimize: process.env.NODE_ENV === ENV_PRODUCTION,
+  //     // minimize: IS_PRD,
   //     minimizer: [new OptimizeCSSAssetsPlugin()],
   //     mergeDuplicateChunks: true
   //   };

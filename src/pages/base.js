@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, } from 'react';
 
 // client render get data function
 export function getInitialState(props, component, setFunctions) {
@@ -8,23 +8,22 @@ export function getInitialState(props, component, setFunctions) {
     if (typeof window !== 'undefined') {
       if (!props.ssrData && component.getInitialProps) {
         component.getInitialProps().then(res => {
-
           if (res) {
             for (const key in res) {
               if (res[key]) {
-                setFunctions[key](res[key])
+                setFunctions[key](res[key]);
               }
             }
           }
-        })
+        });
       }
     }
-  }, [1])
+  }, [1,]);
 }
 
 export function getProps(props, key, defaultValue) {
   if (props.ssrData) {
-    return props.ssrData[key]
+    return props.ssrData[key];
   }
   return defaultValue;
 }

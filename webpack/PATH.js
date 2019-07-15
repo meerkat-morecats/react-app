@@ -1,16 +1,16 @@
 const path = require('path');
-const cwd = process.cwd();
+const CWD = process.cwd();
 
-const SRC = path.join(cwd,'src');
-const DIST = path.join(cwd,'dist');
+const SRC = path.join(CWD, 'src');
+const DIST = path.join(CWD, 'dist');
 
 module.exports = {
-    clientEntry: path.join(cwd, 'src/app.js'),
-    clientOutput: path.join(cwd, 'dist/assets'),
-    serverEntry: path.join(cwd, 'src/server.js'),
-    serverOutput: path.join(cwd, 'dist'),
-    templatePath: path.join(cwd, 'src/index.html'),
-    SRC,
-    DIST,
-    CWD:cwd,
+  clientEntry: path.join(CWD, 'src/app.js'),
+  clientOutput: path.join(CWD, 'dist/assets'),
+  serverEntry: path.join(CWD, 'src/server.js'),
+  serverOutput: path.join(CWD, 'dist'),
+  templatePath: path.join(CWD, 'src/index.html'),
+  SRC,
+  DIST,
+  CWD,
 };

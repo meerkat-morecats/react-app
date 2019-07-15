@@ -7,7 +7,6 @@ import { LazyList, } from '../../components/LazyList';
 import { Tag, } from '../../components/Tag';
 import './style.scss';
 
-
 /**
  * @todo 动态列表渲染数据 或者分页
  * @param {Object} props
@@ -19,47 +18,52 @@ function Home(props) {
   getInitialState(props, Home, { data: setData, tags: setTags, });
   // getInitialState(props, Home, { tags: setTags });
   console.log(tags);
-  return <div className="home-wrapper">
-    <Crumb title="标签列表" ></Crumb>
-    <section className="home-wrapper-tags">
-      {tags.map(({ tagName, ...tag }) =>
-        <Tag key={tagName}><Link
-          className="home-wrapper-tags__link"
-          {...tag}
-        >{tagName}</Link></Tag>
-      )}
-    </section>
+  return (
+    <div className="home-wrapper">
+      <Crumb title="标签列表"></Crumb>
+      <section className="home-wrapper-tags">
+        {tags.map(({ tagName, ...tag }) => (
+          <Tag key={tagName}>
+            <Link className="home-wrapper-tags__link"
+              {...tag}
+            >
+              {tagName}
+            </Link>
+          </Tag>
+        ))}
+      </section>
 
-    <Crumb title="文章列表" ></Crumb>
-    <LazyList data={data} />
-  </div>;
+      <Crumb title="文章列表"></Crumb>
+      <LazyList data={data} />
+    </div>
+  );
 }
 
 Home.getInitialProps = async () => {
   // const api = '';
   // // 请求数据
   // const data = await axios(api);
-  const data = [{
-    to: '/abc',
-    title: '文章1',
-    date: '2018-12-12 12:22:22',
-  },
-  {
-    to: '/abc',
-    title: '文章1',
-    date: '2018-12-12 12:22:22',
-
-  },
-  {
-    to: '/abc',
-    title: '文章1',
-    date: '2018-12-12 12:22:22',
-  },
-  {
-    to: '/abc',
-    title: '文章1',
-    date: '2018-12-12 12:22:22',
-  },
+  const data = [
+    {
+      to: '/abc',
+      title: '文章1',
+      date: '2018-12-12 12:22:22',
+    },
+    {
+      to: '/abc',
+      title: '文章1',
+      date: '2018-12-12 12:22:22',
+    },
+    {
+      to: '/abc',
+      title: '文章1',
+      date: '2018-12-12 12:22:22',
+    },
+    {
+      to: '/abc',
+      title: '文章1',
+      date: '2018-12-12 12:22:22',
+    },
   ];
   const tags = [
     {

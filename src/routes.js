@@ -13,29 +13,29 @@ import { BrowserRouter, Switch, Route, } from 'react-router-dom';
 // import routes from './routeConfig';
 const { Home, } = require('./pages/Home');
 const routes = {
-    '/': {
-        component: Home,
-        exact: true,
-        path: '/', // 前端路由规则
-    },
+  '/': {
+    component: Home,
+    exact: true,
+    path: '/', // 前端路由规则
+  },
 };
 const routeConfig = Object.values(routes);
 
 function App() {
-    return (
-        <BrowserRouter>
-            <Switch>
-                {routeConfig.map(ele => (
-                    <Route
-                        component={ele.component}
-                        exact={ele.exact}
-                        key={ele.path}
-                        path={ele.path}
-                    />
-                ))}
-            </Switch>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Switch>
+        {routeConfig.map(ele => (
+          <Route
+            component={ele.component}
+            exact={ele.exact}
+            key={ele.path}
+            path={ele.path}
+          />
+        ))}
+      </Switch>
+    </BrowserRouter>
+  );
 }
 
-export { App ,routes,};
+export { App, routes, };
