@@ -9,33 +9,33 @@
  * @description 前端路由配置
  */
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, } from 'react-router-dom';
 // import routes from './routeConfig';
-const { Home } = require('./pages/Home');
+const { Home, } = require('./pages/Home');
 const routes = {
-  '/': {
-    component: Home,
-    exact: true,
-    path: '/', // 前端路由规则
-  },
-}
+    '/': {
+        component: Home,
+        exact: true,
+        path: '/', // 前端路由规则
+    },
+};
 const routeConfig = Object.values(routes);
 
 function App() {
-  return (
-    <BrowserRouter>
-        <Switch>
-          {routeConfig.map(ele => (
-            <Route
-              key={ele.path}
-              exact={ele.exact}
-              path={ele.path}
-              component={ele.component}
-            />
-          ))}
-        </Switch>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Switch>
+                {routeConfig.map(ele => (
+                    <Route
+                        component={ele.component}
+                        exact={ele.exact}
+                        key={ele.path}
+                        path={ele.path}
+                    />
+                ))}
+            </Switch>
+        </BrowserRouter>
+    );
 }
 
-export { App ,routes};
+export { App ,routes,};

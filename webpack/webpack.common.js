@@ -19,7 +19,7 @@ const ENV_PRODUCTION = 'production';
 const ENV_DEVELOPMENT = 'development';
 
 exports.ENV_DEVELOPMENT = ENV_DEVELOPMENT;
-exports.ENV_DEVELOPMENT = ENV_DEVELOPMENT;
+exports.ENV_PRODUCTION = ENV_PRODUCTION;
 
 exports.getConfig = function () {
   const cssLoader =

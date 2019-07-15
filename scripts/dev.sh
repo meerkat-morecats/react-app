@@ -1,2 +1,2 @@
 export NODE_ENV=development
-webpack-dev-server --config webpack/webpack.dev.js 
+webpack --config webpack/webpack.client.config.js --progress

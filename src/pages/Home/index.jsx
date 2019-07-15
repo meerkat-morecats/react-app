@@ -1,29 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 // import axios from 'axios';
-import { getInitialState, getProps } from '../base';
-import { Link } from 'react-router-dom'
-import { Crumb } from '../../components/Crumb'
-import { LazyList } from '../../components/LazyList'
-import { Tag } from '../../components/Tag'
+import { getInitialState, getProps, } from '../base';
+import { Link, } from 'react-router-dom';
+import { Crumb, } from '../../components/Crumb';
+import { LazyList, } from '../../components/LazyList';
+import { Tag, } from '../../components/Tag';
 import './style.scss';
 
 
 /**
  * @todo 动态列表渲染数据 或者分页
- * @param {Object} props 
+ * @param {Object} props
  */
 // 做的像目录一样
 function Home(props) {
-  const [data, setData] = useState(getProps(props, 'data', []));
-  const [tags, setTags] = useState(getProps(props, 'tags', []))
-  getInitialState(props, Home, { data: setData, tags: setTags });
+  const [data, setData,] = useState(getProps(props, 'data', []));
+  const [tags, setTags,] = useState(getProps(props, 'tags', []));
+  getInitialState(props, Home, { data: setData, tags: setTags, });
   // getInitialState(props, Home, { tags: setTags });
-  console.log(tags)
+  console.log(tags);
   return <div className="home-wrapper">
     <Crumb title="标签列表" ></Crumb>
     <section className="home-wrapper-tags">
       {tags.map(({ tagName, ...tag }) =>
-        <Tag key={tagName}><Link className="home-wrapper-tags__link" {...tag}>{tagName}</Link></Tag>
+        <Tag key={tagName}><Link
+          className="home-wrapper-tags__link"
+          {...tag}
+        >{tagName}</Link></Tag>
       )}
     </section>
 
@@ -39,36 +42,36 @@ Home.getInitialProps = async () => {
   const data = [{
     to: '/abc',
     title: '文章1',
-    date: '2018-12-12 12:22:22'
+    date: '2018-12-12 12:22:22',
   },
   {
     to: '/abc',
     title: '文章1',
-    date: '2018-12-12 12:22:22'
+    date: '2018-12-12 12:22:22',
 
   },
   {
     to: '/abc',
     title: '文章1',
-    date: '2018-12-12 12:22:22'
+    date: '2018-12-12 12:22:22',
   },
   {
     to: '/abc',
     title: '文章1',
-    date: '2018-12-12 12:22:22'
+    date: '2018-12-12 12:22:22',
   },
   ];
   const tags = [
     {
       to: '/node',
-      tagName: 'node'
+      tagName: 'node',
     },
     {
       to: '/react',
-      tagName: 'react'
-    }
-  ]
-  return { data, tags };
+      tagName: 'react',
+    },
+  ];
+  return { data, tags, };
 };
 
-export { Home };
+export { Home, };
