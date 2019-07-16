@@ -3,25 +3,23 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
-const { SRC, DIST, CWD, } = require('./PATH');
+const { SRC, DIST, } = require('./PATH');
 const { getConfig, IS_PRD, } = require('./webpack.common');
-
-const isDevelope = IS_PRD;
 
 module.exports = merge(getConfig(), {
   mode: 'development',
   target: 'web',
-  entry: path.join(SRC, 'app.js'),
+  entry: path.join(SRC, 'client.js'),
   output: {
     path: path.join(DIST, 'assets'),
     publicPath: '/assets/',
-    filename: isDevelope ? '[name].js' : '[name].[hash].js',
-    chunkFilename: isDevelope ? '[name].js' : '[name].[hash].chunk.js',
+    filename: !IS_PRD ? '[name].js' : '[name].[hash].js',
+    chunkFilename: !IS_PRD ? '[name].js' : '[name].[hash].chunk.js',
   },
   stats: 'errors-only',
-  devtool: 'cheap-module-eval-source-map',
-  watch: true,
-  watchOptions: {
+  devtool: IS_PRD?'eval':'cheap-module-eval-source-map',
+  watch: !IS_PRD ,
+  watchOptions: IS_PRD ? null : {
     aggregateTimeout: 1000,
     poll: 2000,
   },
@@ -35,10 +33,11 @@ module.exports = merge(getConfig(), {
       filename: 'index.html',
       template: path.join(SRC, 'public/index.html'),
       title: 'development',
+      favicon: path.join(SRC,'public/favicon.ico'),
     }),
     // new MiniCssExtractPlugin({
-    //   filename: isDevelope ? '[name].css' : '[name].[hash].css',
-    //   chunkFilename: isDevelope ? '[id].css' : '[id].[hash].css',
+    //   filename: !IS_PRD ? '[name].css' : '[name].[hash].css',
+    //   chunkFilename: !IS_PRD ? '[id].css' : '[id].[hash].css',
     // }),
   ],
 });

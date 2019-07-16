@@ -22,7 +22,7 @@ const { SRC, DIST, } = require('./PATH');
 let running = false;
 
 module.exports = merge(getConfig(), {
-  entry: path.join(SRC, 'server.js'),
+  entry: path.join(SRC, 'server/index.js'),
   target: 'node',
   output: {
     filename: 'server.js',

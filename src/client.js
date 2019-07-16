@@ -11,11 +11,14 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { App, } from './routes';
+import { BrowserRouter, } from 'react-router-dom';
+import { App, } from './components/App';
 import './common/scss/main.scss';
 
-if (process.env.NODE_ENV === 'development') {
-  ReactDOM.render(<App />, document.getElementById('root'));
-} else {
-  ReactDOM.hydrate(<App />, document.getElementById('root'));
-}
+
+ReactDOM.hydrate(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+  , document.getElementById('root'));
+
