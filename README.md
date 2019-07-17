@@ -48,8 +48,8 @@ npm start
 - [ ] typscript
 - [ ] 与 next 框架对比
 - [ ] 添加测试
+- [ ] 开发环境热更新，修改之后依然需要每次刷新页面
 
 ## QUESTION
 
 - [x] 在router中异步引入组件会有错误
-- [x] 

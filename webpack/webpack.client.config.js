@@ -19,10 +19,10 @@ module.exports = merge(getConfig(), {
   stats: 'errors-only',
   devtool: IS_PRD?'eval':'cheap-module-eval-source-map',
   watch: !IS_PRD ,
-  watchOptions: IS_PRD ? null : {
-    aggregateTimeout: 1000,
-    poll: 2000,
-  },
+  // watchOptions: IS_PRD ? undefined : {
+  //   aggregateTimeout: 1000,
+  //   poll: 2000,
+  // },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),

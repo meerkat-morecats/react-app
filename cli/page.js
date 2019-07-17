@@ -1,11 +1,16 @@
-import fs  from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 const cwd = process.cwd();
+
+function upperFirstLetter(str) {
+  const first = str[0].toLocaleUpperCase();
+  return first + str.substr(1);
+}
 
 export default function(pageName) {
   // read & change custom page
   pageName = upperFirstLetter(pageName);
-  const pagePath = path.join(cwd, `src/pages/${pageName}`);
+  const pagePath = path.join(cwd, `src/components/pages/${pageName}`);
   console.log(pagePath);
   try {
     const stat = fs.statSync(pagePath);
@@ -39,7 +44,4 @@ export default function(pageName) {
   });
 }
 
-function upperFirstLetter(str) {
-  const first = str[0].toLocaleUpperCase();
-  return first + str.substr(1);
-}
+

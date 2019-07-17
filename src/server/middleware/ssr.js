@@ -1,6 +1,6 @@
 import { React, } from 'react';
 import { StaticRouter, } from 'react-router-dom';
-import App from '../components/App';
+import App from '../../components/App';
 import ReactDOMServer from 'react-dom/server';
 import path from 'path';
 import fs from 'fs';
