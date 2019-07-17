@@ -3,6 +3,12 @@
 - node v10.15
 - 通过我的个人网站将他落地
 
+## 运行项目
+```
+npm install 
+npm start 
+```
+
 ## 目录结构
 
 ```
@@ -35,7 +41,7 @@
 
 ## TODO
 
-- [ ] 配置开发环境
+- [x] 配置开发环境
 - [x] 开发前端界面 hooks，实现多个页面，每个页面依赖多个组件
 - [ ] express 文件压缩、打包、缓存设计
 - [x] 脚手架、实现页面组件的创建(产生 page/component，page 包含 getInitialProps)

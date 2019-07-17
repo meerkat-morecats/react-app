@@ -1,11 +1,11 @@
 const express = require('express');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-const { StaticRouter, } =require('react-router-dom');
+const { StaticRouter, Route,Switch,} =require('react-router-dom');
 const path = require('path');
 const logger = require('./utils/logger');
 const fs = require('fs');
-const App =require('../components/App');
+const App =require('../components/App').default;
 
 // const history = require("connect-history-api-fallback");
 const parser = require('body-parser');
@@ -31,10 +31,9 @@ app.use('/api', (req, res) => {
 });
 // 根据路由判断渲染那个页面
 app.get('/*', (req, res) => {
-  console.log('request comming', req.url);
+  console.log(`request comming >>> '${req.url}'`);
   const context = {};
   // const Application = routes[req.path]['component'];
-
   const ssrHtml=ReactDOMServer.renderToStaticMarkup(
     <StaticRouter context={context}
       location={req.url}
@@ -50,5 +49,6 @@ app.get('/*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  logger.info(`SSR is running on ${PORT}!`);
+  logger.info(`node server is running on ${PORT}!`);
 });
+

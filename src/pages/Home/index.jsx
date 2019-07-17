@@ -1,4 +1,4 @@
-import React, { useState, useEffect, } from 'react';
+import React, { useState, } from 'react';
 // import axios from 'axios';
 import { getInitialState, getProps, } from '../base';
 import { Link, } from 'react-router-dom';
@@ -12,7 +12,7 @@ import './style.scss';
  * @param {Object} props
  */
 // 做的像目录一样
-function Home(props) {
+export default function Home(props) {
   const [data, setData,] = useState(getProps(props, 'data', []));
   const [tags, setTags,] = useState(getProps(props, 'tags', []));
   getInitialState(props, Home, { data: setData, tags: setTags, });
@@ -78,4 +78,3 @@ Home.getInitialProps = async () => {
   return { data, tags, };
 };
 
-export { Home, };

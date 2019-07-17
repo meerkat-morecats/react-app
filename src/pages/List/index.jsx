@@ -22,4 +22,4 @@ List.getInitialProps = async () => {
   return { data, };
 };
 
-export { List, };
+export default List;

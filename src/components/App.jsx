@@ -16,14 +16,17 @@ import routeConfig from '../configuration/route.config';
 export default function App() {
   return (
     <Switch>
-      {routeConfig.map(ele => (
-        <Route
-          component={ele.component}
-          exact={ele.exact}
-          key={ele.path}
-          path={ele.path}
-        />
-      ))}
+      {routeConfig.map((item) => {
+        console.log(item.component);
+        return <Route
+          exact={item.exact}
+          key={item.path}
+          path={item.path}
+          render={props=><item.component {...props}></item.component>}
+        />;
+      })
+      }
+
     </Switch>
   );
 }
