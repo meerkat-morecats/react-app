@@ -5,12 +5,16 @@ export default [
   {
     component: List,
     exact: true,
-    path: '/list', // 前端路由规则
+    path: '/list/:id', // 前端路由规则
   },
   {
     component: Home,
     exact: true,
     path: '/', // 前端路由规则
+  },
+  {
+    redirect:true,
+    path: '/',
   },
 ];
 

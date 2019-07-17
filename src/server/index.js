@@ -1,14 +1,9 @@
 import express  from 'express';
-import React  from 'react';
-import ReactDOMServer  from 'react-dom/server';
-import { StaticRouter,} from 'react-router-dom';
 import path  from 'path';
 import logger  from './utils/logger';
-import fs  from 'fs';
-import App from '../components/App';
 import parser  from 'body-parser';
 import favicon  from 'serve-favicon';
-import routeConfig from '../configuration/route.config';
+import middlewares from './middleware';
 
 const app = express();
 const ENV = process.env.NODE_ENV;
@@ -23,36 +18,13 @@ app.use('/assets',express.static(path.join(process.cwd(), 'dist/assets'), { maxA
 // 设置 favicon.ico
 app.use(favicon(path.join(process.cwd(), 'dist/assets', 'favicon.ico')));
 
-// 转发路由
 app.use('/api', (req, res) => {
+  // 转发路由
   res.end('req api');
 });
-// 根据路由判断渲染那个页面
-app.get('/*', (req, res) => {
-  console.log(`request comming >>> '${req.url}'`);
 
-  const context = {};
-  // 在这里加入 root 元素，要不然会有警告
-  const component = <StaticRouter context={context}
-    location={req.url}
-  >
-    <App routes={routeConfig} />
-  </StaticRouter>;
-  console.log(component);
-
-  const ssrHtml=ReactDOMServer.renderToString(
-    <div id="root">
-      <StaticRouter context={context}
-        location={req.url}
-      >
-        <App routes={routeConfig} />
-      </StaticRouter>
-    </div>
-  );
-  const tpl = fs.readFileSync(path.join(process.cwd(), 'dist/assets/index.html'),'utf-8');
-  const html = tpl.replace('<!-- STATIC_DOM -->', ssrHtml);
-  res.append('content-type', 'text/html; charset=utf-8');
-  res.send(html);
+middlewares.forEach(middleware=>{
+  app.use(middleware);
 });
 
 app.listen(PORT, () => {

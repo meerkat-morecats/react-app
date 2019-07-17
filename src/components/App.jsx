@@ -9,19 +9,25 @@
  * @description 前端路由配置
  */
 import React from 'react';
-import { Switch, Route, } from 'react-router-dom';
+import { Switch, Route,Redirect, } from 'react-router-dom';
 import routeConfig from '../configuration/route.config';
 // import routes from './routeConfig';
 
 export default function App(props) {
   return (
     <Switch>
-      {routeConfig.map((item) => {
+      {routeConfig.map((item,index) => {
+        if (item.redirect) {
+          return <Redirect
+            key={index}
+            to={item.path}
+          />;
+        }
         return <Route
           exact={item.exact}
-          key={item.path}
+          key={index}
           path={item.path}
-          render={props=><item.component {...props}></item.component>}
+          render={props=><item.component {...props} />}
         />;
       })
       }

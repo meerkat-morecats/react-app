@@ -13,7 +13,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, } from 'react-router-dom';
 import App from './components/App';
-import './common/scss/main.scss';
+import './static/scss/main.scss';
 import routeConfig from './configuration/route.config';
 
 ReactDOM.hydrate(
