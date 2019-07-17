@@ -31,11 +31,6 @@ module.exports = merge(getConfig(), {
   },
   stats: 'errors-only',
   externals: [nodeExternals(),],
-  // watch: !IS_PRD ,
-  // watchOptions: IS_PRD ? null : {
-  //   aggregateTimeout: 1000,
-  //   poll: 2000,
-  // },
   plugins: [
     new EventHooksPlugin({
       done: () => {

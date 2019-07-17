@@ -20,6 +20,9 @@ app.use(favicon(path.join(process.cwd(), 'dist/assets', 'favicon.ico')));
 
 app.use('/api', (req, res) => {
   // 转发路由
+  res.writeHead(302, {
+    Location: '/list/1',
+  });
   res.end('req api');
 });
 

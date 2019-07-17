@@ -17,7 +17,6 @@ export default function Home(props) {
   const [tags, setTags,] = useState(getProps(props, 'tags', []));
   getInitialState(props, Home, { data: setData, tags: setTags, });
   // getInitialState(props, Home, { tags: setTags });
-  console.log(tags);
   return (
     <div className="home-wrapper">
       <Crumb title="标签列表"></Crumb>

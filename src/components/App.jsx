@@ -10,13 +10,13 @@
  */
 import React from 'react';
 import { Switch, Route,Redirect, } from 'react-router-dom';
-import routeConfig from '../configuration/route.config';
+// import routeConfig from '../configuration/route.config';
 // import routes from './routeConfig';
 
 export default function App(props) {
   return (
     <Switch>
-      {routeConfig.map((item,index) => {
+      {props.routes.map((item,index) => {
         if (item.redirect) {
           return <Redirect
             key={index}
@@ -27,7 +27,8 @@ export default function App(props) {
           exact={item.exact}
           key={index}
           path={item.path}
-          render={props=><item.component {...props} />}
+          render={()=>
+            <item.component ssrData={props.ssrData} />}
         />;
       })
       }
