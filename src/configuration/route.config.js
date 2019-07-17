@@ -1,11 +1,14 @@
-module.exports = [
+// import  from '@loadable/component';
+import Home from '../components/pages/Home';
+import List from '../components/pages/List';
+export default [
   {
-    component: require('../pages/Home').default,
+    component: List,
     exact: true,
     path: '/list', // 前端路由规则
   },
   {
-    component: require('../pages/Home').default,
+    component: Home,
     exact: true,
     path: '/', // 前端路由规则
   },

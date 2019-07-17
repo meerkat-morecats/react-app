@@ -13,11 +13,10 @@ import { Switch, Route, } from 'react-router-dom';
 import routeConfig from '../configuration/route.config';
 // import routes from './routeConfig';
 
-export default function App() {
+export default function App(props) {
   return (
     <Switch>
       {routeConfig.map((item) => {
-        console.log(item.component);
         return <Route
           exact={item.exact}
           key={item.path}
@@ -30,4 +29,3 @@ export default function App() {
     </Switch>
   );
 }
-

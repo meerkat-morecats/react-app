@@ -2,9 +2,9 @@
  * @description winston logger 打印配置
  */
 
-const winston = require('winston');
-const path = require('path');
-const moment = require('moment');
+import winston  from 'winston';
+import path  from 'path';
+import moment  from 'moment';
 const LOG_PATH = path.join(process.cwd(), 'dist/logs/error.log');
 const { printf, combine, timestamp, label, } = winston.format;
 
@@ -26,6 +26,6 @@ const ERROR_CONFIG = {
   format: combine(label({ label: '', }), timestamp(), format),
 };
 
-module.exports = winston.createLogger(ERROR_CONFIG);
+export default winston.createLogger(ERROR_CONFIG);
 
 // logger.error('This is an information message.', { test: 123 });

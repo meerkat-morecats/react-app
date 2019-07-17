@@ -2,9 +2,9 @@ import React, { useState, } from 'react';
 // import axios from 'axios';
 import { getInitialState, getProps, } from '../base';
 import { Link, } from 'react-router-dom';
-import { Crumb, } from '../../components/Crumb';
-import { LazyList, } from '../../components/LazyList';
-import { Tag, } from '../../components/Tag';
+import { Crumb, } from '../../common/Crumb';
+import { LazyList, } from '../../common/LazyList';
+import { Tag, } from '../../common/Tag';
 import './style.scss';
 
 /**

@@ -1,16 +1,15 @@
-const express = require('express');
-const React = require('react');
-const ReactDOMServer = require('react-dom/server');
-const { StaticRouter, Route,Switch,} =require('react-router-dom');
-const path = require('path');
-const logger = require('./utils/logger');
-const fs = require('fs');
-const App =require('../components/App').default;
+import express  from 'express';
+import React  from 'react';
+import ReactDOMServer  from 'react-dom/server';
+import { StaticRouter,} from 'react-router-dom';
+import path  from 'path';
+import logger  from './utils/logger';
+import fs  from 'fs';
+import App from '../components/App';
 
-// const history = require("connect-history-api-fallback");
-const parser = require('body-parser');
+import parser  from 'body-parser';
 
-const favicon = require('serve-favicon');
+import favicon  from 'serve-favicon';
 
 const app = express();
 const ENV = process.env.NODE_ENV;
@@ -34,12 +33,15 @@ app.get('/*', (req, res) => {
   console.log(`request comming >>> '${req.url}'`);
   const context = {};
   // const Application = routes[req.path]['component'];
-  const ssrHtml=ReactDOMServer.renderToStaticMarkup(
-    <StaticRouter context={context}
-      location={req.url}
-    >
-      <App />
-    </StaticRouter>);
+  const ssrHtml=ReactDOMServer.renderToString(
+    <div id="root">
+      <StaticRouter context={context}
+        location={req.url}
+      >
+        <App />
+      </StaticRouter>
+    </div>
+  );
 
   const tpl = fs.readFileSync(path.join(process.cwd(), 'dist/assets/index.html'),'utf-8');
   // const html = insertStatic(options);

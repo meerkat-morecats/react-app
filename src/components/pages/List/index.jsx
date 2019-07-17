@@ -3,7 +3,7 @@ import axios from 'axios';
 import { getInitialState, getProps, } from '../base';
 import './style.scss';
 
-function List(props) {
+export default function List(props) {
   const [data, setData,] = useState(getProps(props, 'data', {}));
   getInitialState(props, List, { data: setData, });
   return (
@@ -22,4 +22,4 @@ List.getInitialProps = async () => {
   return { data, };
 };
 
-export default List;
+

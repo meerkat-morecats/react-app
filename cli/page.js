@@ -1,7 +1,8 @@
-const fs = require('fs');
-const path = require('path');
+import fs  from 'fs';
+import path from 'path';
 const cwd = process.cwd();
-module.exports = function(pageName) {
+
+export default function(pageName) {
   // read & change custom page
   pageName = upperFirstLetter(pageName);
   const pagePath = path.join(cwd, `src/pages/${pageName}`);
@@ -36,7 +37,7 @@ module.exports = function(pageName) {
     }
     console.info('write scss file success !');
   });
-};
+}
 
 function upperFirstLetter(str) {
   const first = str[0].toLocaleUpperCase();

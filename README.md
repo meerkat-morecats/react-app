@@ -51,4 +51,5 @@ npm start
 
 ## QUESTION
 
--
+- [x] 在router中异步引入组件会有错误
+- [x] 
