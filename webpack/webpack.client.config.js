@@ -17,8 +17,8 @@ module.exports = merge(getConfig(), {
     chunkFilename: !IS_PRD ? '[name].js' : '[name].[hash].chunk.js',
   },
   externals: {
-    // react: 'React',
-    // 'react-dom': 'ReactDOM',
+    react: 'React',
+    'react-dom': 'ReactDOM',
     // 'react-router-dom':'ReactRouterDom',
   },
   stats: 'errors-only',

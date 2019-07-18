@@ -13,7 +13,16 @@ import { Switch, Route,Redirect, } from 'react-router-dom';
 import routeConfig from '../configuration/route.config';
 // import routes from './routeConfig';
 
+/**
+ * @todo 在客户端渲染的时候；
+ *        锁定对应的 component；
+ *        传入 ssrData；
+ *        新增一个baseUrl字段判断路由；
+ *        传入ssrData阻止页面重新渲染；
+ */
+
 export default function App(props) {
+  console.log(props);
   return (
     <Switch>
       {routeConfig.map((item,index) => {

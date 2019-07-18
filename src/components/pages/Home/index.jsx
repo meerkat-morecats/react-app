@@ -1,5 +1,5 @@
 import React, { useState, } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import { getInitialState, getProps, } from '../base';
 import { Link, } from 'react-router-dom';
 import { Crumb, } from '../../common/Crumb';
@@ -13,47 +13,25 @@ import './style.scss';
  */
 // 做的像目录一样
 export default function Home(props) {
-  const [data, setData,] = useState(getProps(props, 'data', [
-    {
-      to: '/abc',
-      title: '文章1',
-      date: '2018-12-12 12:22:22',
-    },
-    {
-      to: '/abc',
-      title: '文章1',
-      date: '2018-12-12 12:22:22',
-    },
-    {
-      to: '/abc',
-      title: '文章1',
-      date: '2018-12-12 12:22:22',
-    },
-    {
-      to: '/abc',
-      title: '文章1',
-      date: '2018-12-12 12:22:22',
-    },
-  ]));
+  const [data, setData,] = useState(getProps(props, 'data', []));
   const [tags, setTags,] = useState(getProps(props, 'tags', []));
   getInitialState(props, Home, { data: setData, tags: setTags, });
   // getInitialState(props, Home, { tags: setTags });
-  // debugger;
+  debugger;
   return (
     <div className="home-wrapper">
       <Crumb title="标签列表"></Crumb>
-      {/* <div className="home-wrapper-tags">
-        {tags.map(({ tagName, ...tag }) => (
+      <section className="home-wrapper-tags">
+        {/* {tags.map(({ tagName, ...tag }) => (
           <Tag key={tagName}>
-            <a className="home-wrapper-tags__link"
+            <Link className="home-wrapper-tags__link"
               {...tag}
             >
               {tagName}
-            </a>
+            </Link>
           </Tag>
-        ))}
-      </div> */}
-
+        ))} */}
+      </section>
       <Crumb title="文章列表"></Crumb>
       <LazyList data={data} />
     </div>
@@ -61,41 +39,16 @@ export default function Home(props) {
 }
 
 Home.getInitialProps = async () => {
+  debugger;
   // const api = '';
   // // 请求数据
   // const data = await axios(api);
-  const data = [
-    {
-      to: '/abc',
-      title: '文章1',
-      date: '2018-12-12 12:22:22',
-    },
-    {
-      to: '/abc',
-      title: '文章1',
-      date: '2018-12-12 12:22:22',
-    },
-    {
-      to: '/abc',
-      title: '文章1',
-      date: '2018-12-12 12:22:22',
-    },
-    {
-      to: '/abc',
-      title: '文章1',
-      date: '2018-12-12 12:22:22',
-    },
-  ];
-  const tags = [
-    {
-      to: '/node',
-      tagName: 'node',
-    },
-    {
-      to: '/react',
-      tagName: 'react',
-    },
-  ];
-  return { data, tags, };
+  let ssrData = null;
+  await await axios.get('/api').then(res=>{
+    console.log(res.data);
+    ssrData =res.data;
+  });
+  return ssrData;
+  // return ssrData;
 };
 

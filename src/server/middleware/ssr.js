@@ -52,7 +52,7 @@ export default async function(req,res,next){
   const context = {};
   const CSS_REG = /\.css$/;
   /** 获取css内容 */
-  const testReg = /<[^<>]+(script)[^<>]+>/g;
+  // const testReg = /<[^<>]+(script)[^<>]+>/g;
   const cssReg=/<[^<>]+(stylesheet)[^<>]+>/g;
   const distFiles =  fs.readdirSync(path.join(CWD,'dist/assets'));
   const cssFiles = distFiles.filter(item=>CSS_REG.test(item));
@@ -60,20 +60,20 @@ export default async function(req,res,next){
     return content+ fs.readFileSync(path.join(CWD,'dist/assets',filename));
   },'');
   // @todo 在这里加入 root 元素，要不然会有警告
-  // const markup=ReactDOMServer.renderToString(
-  //   <StaticRouter
-  //     context={context}
-  //     location={req.url}
-  //   >
-  //     <App
-  //       routes={routeConfig}
-  //       ssrData={ssrData} />
-  //   </StaticRouter>
-  // );
-
-  const markup = ReactDOMServer.renderToString(
-    <div id="root"><Home  ssrData={ssrData} /></div>
+  const markup=ReactDOMServer.renderToString(
+    <StaticRouter
+      context={context}
+      location={req.url}
+    >
+      <App
+        routes={routeConfig}
+        ssrData={ssrData} />
+    </StaticRouter>
   );
+
+  // const markup = ReactDOMServer.renderToString(
+  //   <Home  ssrData={ssrData} />
+  // );
 
   // console.log(markup);
 
@@ -82,11 +82,12 @@ export default async function(req,res,next){
   const html = tpl
     .replace(cssReg,'')
     // .replace(testReg,'')
-    .replace('<!-- MARKUP -->', `${markup}`)
-    .replace('<!-- INNER_STYLE -->',`<style type="text/css">${cssContent}</style>`);
+    .replace('<!-- MARKUP -->', markup)
+    .replace('<!-- INNER_STYLE -->',`<style type="text/css">${cssContent}</style>`)
+    .replace('/*getInitialProps*/',`window.__SSR_DATA__=${JSON.stringify(ssrData)}`);
     // .replace('<div id="root"><div class="home-wrapper">','<div id="root"><div class="home-wrapper" data-reactroot="">');
 
-  console.log(html);
+  // console.log(html);
 
   res.append('content-type', 'text/html; charset=utf-8');
   // 处理重定向

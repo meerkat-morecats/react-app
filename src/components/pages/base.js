@@ -8,6 +8,7 @@ export function getInitialState(props, component, setFunctions) {
     if (typeof window !== 'undefined') {
       if (!props.ssrData && component.getInitialProps) {
         component.getInitialProps().then(res => {
+          console.log(res);
           if (res) {
             for (const key in res) {
               if (res[key]) {

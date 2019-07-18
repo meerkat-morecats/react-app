@@ -20,10 +20,40 @@ app.use(favicon(path.join(process.cwd(), 'dist/assets', 'favicon.ico')));
 
 app.use('/api', (req, res) => {
   // 转发路由
-  res.writeHead(302, {
-    Location: '/list/1',
+  console.log('get api');
+  res.json({ data:[
+    {
+      to: '/abc',
+      title: '文章1',
+      date: '2018-12-12 12:22:22',
+    },
+    {
+      to: '/abc',
+      title: '文章1',
+      date: '2018-12-12 12:22:22',
+    },
+    {
+      to: '/abc',
+      title: '文章1',
+      date: '2018-12-12 12:22:22',
+    },
+    {
+      to: '/abc',
+      title: '文章1',
+      date: '2018-12-12 12:22:22',
+    },
+  ],
+  tags:[
+    {
+      to: '/node',
+      tagName: 'node',
+    },
+    {
+      to: '/react',
+      tagName: 'react',
+    },
+  ],
   });
-  res.end('req api');
 });
 
 middlewares.forEach(middleware=>{
