@@ -17,12 +17,35 @@ module.exports = merge(getConfig(), {
     chunkFilename: !IS_PRD ? '[name].js' : '[name].[hash].chunk.js',
   },
   externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
+    // react: 'React',
+    // 'react-dom': 'ReactDOM',
+    // 'react-router-dom':'ReactRouterDom',
   },
   stats: 'errors-only',
   devtool: IS_PRD?'eval':'cheap-module-eval-source-map',
   watch: !IS_PRD ,
+  optimization: {
+    minimize: true,
+    runtimeChunk: 'single',
+    splitChunks: {
+      chunks: 'all',
+      maxInitialRequests: Infinity,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          // name(module) {
+          //   // get the name. E.g. node_modules/packageName/not/this/part.js
+          //   // or node_modules/packageName
+          //   const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+
+          //   // npm package names are URL-safe, but some servers don't like @ symbols
+          //   return `npm.${packageName.replace('@', '')}`;
+          // },
+        },
+      },
+    },
+
+  },
   plugins: IS_PRD?[
     new webpack.NamedModulesPlugin(),
     new CleanWebpackPlugin({cleanStaleWebpackAssets: true,}),

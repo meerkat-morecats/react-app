@@ -10,15 +10,17 @@
  */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, } from 'react-router-dom';
-import App from './components/App';
+import {hydrate,render,} from 'react-dom';
+// import { BrowserRouter, } from 'react-router-dom';
+// import App from './components/App';
 import './static/scss/main.scss';
-import routeConfig from './configuration/route.config';
+// import routeConfig from './configuration/route.config';
+import Home from './components/pages/Home';
 
-ReactDOM.hydrate(
-  <BrowserRouter>
-    <App routes={routeConfig} />
-  </BrowserRouter>
+hydrate(
+  // <BrowserRouter>
+  //   <App routes={routeConfig} />
+  // </BrowserRouter>
+  <Home />
   , document.getElementById('root'));
 

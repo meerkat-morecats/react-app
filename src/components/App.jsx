@@ -10,13 +10,13 @@
  */
 import React from 'react';
 import { Switch, Route,Redirect, } from 'react-router-dom';
-// import routeConfig from '../configuration/route.config';
+import routeConfig from '../configuration/route.config';
 // import routes from './routeConfig';
 
 export default function App(props) {
   return (
     <Switch>
-      {props.routes.map((item,index) => {
+      {routeConfig.map((item,index) => {
         if (item.redirect) {
           return <Redirect
             key={index}

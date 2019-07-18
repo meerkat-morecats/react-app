@@ -13,24 +13,46 @@ import './style.scss';
  */
 // 做的像目录一样
 export default function Home(props) {
-  const [data, setData,] = useState(getProps(props, 'data', []));
+  const [data, setData,] = useState(getProps(props, 'data', [
+    {
+      to: '/abc',
+      title: '文章1',
+      date: '2018-12-12 12:22:22',
+    },
+    {
+      to: '/abc',
+      title: '文章1',
+      date: '2018-12-12 12:22:22',
+    },
+    {
+      to: '/abc',
+      title: '文章1',
+      date: '2018-12-12 12:22:22',
+    },
+    {
+      to: '/abc',
+      title: '文章1',
+      date: '2018-12-12 12:22:22',
+    },
+  ]));
   const [tags, setTags,] = useState(getProps(props, 'tags', []));
   getInitialState(props, Home, { data: setData, tags: setTags, });
   // getInitialState(props, Home, { tags: setTags });
+  // debugger;
   return (
     <div className="home-wrapper">
       <Crumb title="标签列表"></Crumb>
-      <section className="home-wrapper-tags">
+      {/* <div className="home-wrapper-tags">
         {tags.map(({ tagName, ...tag }) => (
           <Tag key={tagName}>
-            <Link className="home-wrapper-tags__link"
+            <a className="home-wrapper-tags__link"
               {...tag}
             >
               {tagName}
-            </Link>
+            </a>
           </Tag>
         ))}
-      </section>
+      </div> */}
 
       <Crumb title="文章列表"></Crumb>
       <LazyList data={data} />

@@ -1,11 +1,11 @@
 import React from 'react';
-import { StaticRouter, } from 'react-router-dom';
+import { StaticRouter, withRouter,} from 'react-router-dom';
 import App from '../../components/App';
 import ReactDOMServer from 'react-dom/server';
 import path from 'path';
 import fs from 'fs';
 import routeConfig from '../../configuration/route.config';
-
+import Home from '../../components/pages/Home';
 
 const CWD = process.cwd();
 const ssrData ={ data:[
@@ -52,6 +52,7 @@ export default async function(req,res,next){
   const context = {};
   const CSS_REG = /\.css$/;
   /** 获取css内容 */
+  const testReg = /<[^<>]+(script)[^<>]+>/g;
   const cssReg=/<[^<>]+(stylesheet)[^<>]+>/g;
   const distFiles =  fs.readdirSync(path.join(CWD,'dist/assets'));
   const cssFiles = distFiles.filter(item=>CSS_REG.test(item));
@@ -59,24 +60,33 @@ export default async function(req,res,next){
     return content+ fs.readFileSync(path.join(CWD,'dist/assets',filename));
   },'');
   // @todo 在这里加入 root 元素，要不然会有警告
-  const markup=ReactDOMServer.renderToString(
-    <StaticRouter
-      context={context}
-      location={req.url}
-    >
-      <App routes={routeConfig}
-        ssrData={ssrData} />
-    </StaticRouter>
+  // const markup=ReactDOMServer.renderToString(
+  //   <StaticRouter
+  //     context={context}
+  //     location={req.url}
+  //   >
+  //     <App
+  //       routes={routeConfig}
+  //       ssrData={ssrData} />
+  //   </StaticRouter>
+  // );
+
+  const markup = ReactDOMServer.renderToString(
+    <div id="root"><Home  ssrData={ssrData} /></div>
   );
 
-  console.log(markup);
+  // console.log(markup);
 
   const tpl = fs.readFileSync(path.join(CWD, 'dist/assets/index.html'),'utf-8');
 
   const html = tpl
     .replace(cssReg,'')
-    .replace('<!-- MARKUP -->', `<div id="root">${markup}</div>`)
+    // .replace(testReg,'')
+    .replace('<!-- MARKUP -->', `${markup}`)
     .replace('<!-- INNER_STYLE -->',`<style type="text/css">${cssContent}</style>`);
+    // .replace('<div id="root"><div class="home-wrapper">','<div id="root"><div class="home-wrapper" data-reactroot="">');
+
+  console.log(html);
 
   res.append('content-type', 'text/html; charset=utf-8');
   // 处理重定向
