@@ -1,12 +1,13 @@
 # react hooks ssr 工程化的项目
-
 - node v10.15
-- 通过我的个人网站将他落地
+- 开发环境，只启动前端项目，通过webpack devserver启动，
+- 生产环境，将 node 与 前端项目一起打包，通过 pm2 启动
 
 ## 运行项目
+
 ```
-npm install 
-npm start 
+npm install
+npm start
 ```
 
 ## 目录结构
@@ -22,7 +23,7 @@ npm start
 │   └── ...
 ├── dist 打包后的文件
 │   ├── assets/
-│   │   └── ...  js css 
+│   │   └── ...  js css
 │   └── server.js
 ├── src
 │   ├── components 组件
@@ -55,9 +56,9 @@ npm start
 - [ ] 与 next 框架对比
 - [ ] 添加测试
 - [ ] 开发环境热更新，修改之后依然需要每次刷新页面
-- [ ] postcss 样式模块化
+- [ ] rematch 状态管理
 
 ## QUESTION
 
-- [x] 在router中异步引入组件会有错误
-- [x] staticRouter 有一个问题 ： 不会在dom标签上添加data-reactroot导致页面重新渲染
+- [x] 在 router 中异步引入组件会有错误
+- [x] staticRouter 有一个问题 ： 不会在 dom 标签上添加 data-reactroot 导致页面重新渲染

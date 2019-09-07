@@ -52,9 +52,9 @@ export default async function(req,res,next){
   const context = {};
   const CSS_REG = /\.css$/;
   /** 获取css内容 */
-  // const testReg = /<[^<>]+(script)[^<>]+>/g;
+
   const cssReg=/<[^<>]+(stylesheet)[^<>]+>/g;
-  const distFiles =  fs.readdirSync(path.join(CWD,'dist/assets'));
+  const distFiles = fs.readdirSync(path.join(CWD,'dist/assets'));
   const cssFiles = distFiles.filter(item=>CSS_REG.test(item));
   const cssContent = cssFiles.reduce((content,filename)=>{
     return content+ fs.readFileSync(path.join(CWD,'dist/assets',filename));
@@ -70,12 +70,6 @@ export default async function(req,res,next){
         ssrData={ssrData} />
     </StaticRouter>
   );
-
-  // const markup = ReactDOMServer.renderToString(
-  //   <Home  ssrData={ssrData} />
-  // );
-
-  // console.log(markup);
 
   const tpl = fs.readFileSync(path.join(CWD, 'dist/assets/index.html'),'utf-8');
 
