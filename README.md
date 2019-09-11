@@ -16,20 +16,21 @@ npm start
 .
 ├── cli  脚手架
 │   └── ...
-├── config 配置
-│   └── ...
 ├── node_modules
 ├── scripts 脚本
 │   └── ...
 ├── dist 打包后的文件
 │   ├── assets/
-│   │   └── ...  js css
+│   │   └── ...  .js|.css
 │   └── server.js
 ├── src
-│   ├── components 组件
-│   │   ├── pages   页面
-│   │   └── common  公共组件
-│   ├── static  静态资源
+│   ├── client 客户端
+│   │   ├── components 组件
+│   │   │   ├── pages   页面
+│   │   │   └── common  公共组件
+│   │   ├── static  静态资源
+│   │   ├── app.js 前端入口
+│   │   ├── index.html 前端模板
 │   │   └── ...
 │   ├── lib  客户端服务端公共方法
 │   │   └── ...
@@ -38,10 +39,7 @@ npm start
 │   │   │   └── index.js 在index中引入全部中间件
 │   │   ├── utils node封装的工具
 │   │   └── index.js  node入口
-│   ├── configuration 配置文件
-│   ├── app.js 前端入口
-│   └── index.html 前端模板
-├── webpack webpack 配置
+├── config webpack 配置
 │   └── ...
 └── ...
 ```
@@ -54,11 +52,11 @@ npm start
 - [x] 脚手架、实现页面组件的创建(产生 page/component，page 包含 getInitialProps)
 - [ ] typscript
 - [ ] 与 next 框架对比
-- [ ] 添加测试
+- [ ] 添加jest测试
 - [ ] 开发环境热更新，修改之后依然需要每次刷新页面
 - [ ] rematch 状态管理
 
-## QUESTION
+## QUESTIONS
 
-- [x] 在 router 中异步引入组件会有错误
-- [x] staticRouter 有一个问题 ： 不会在 dom 标签上添加 data-reactroot 导致页面重新渲染
+- 在 router 中异步引入组件会有错误
+- staticRouter 有一个问题 ： 不会在 dom 标签上添加 data-reactroot ,导致客户端重新渲染一次页面

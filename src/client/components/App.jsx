@@ -10,7 +10,7 @@
  */
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import routeConfig, { getComponent } from '../route.config';
+import routeConfig, { isMatch } from '../route.config';
 // import routes from './routeConfig';
 
 /**
@@ -33,10 +33,13 @@ export default function App(props) {
                         exact={item.exact}
                         key={index}
                         path={item.path}
-                        render={() => (
+                        render={() => {
                             // item.component.path=item.path;
-                            <item.component route-path={item.path} ssrData={props.ssrData} />
-                        )}
+                            if (isMatch(props.ssrPage, item.path)) {
+                                return <item.component route-path={item.path} ssrData={props.ssrData} />;
+                            }
+                            return <item.component route-path={item.path} />;
+                        }}
                     />
                 );
             })}
