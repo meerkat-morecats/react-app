@@ -34,10 +34,14 @@ module.exports = merge(getConfig(), {
     new EventHooksPlugin({
       done: () => {
         if (!IS_PRD) {
+          // 加锁防止反复启动
           if (!running) {
             running = true;
             // process.chdir(path.join(__dirname, '../dist'));
             // cp.exec("node server.js").stdout.pipe(process.stdout);
+            /**
+             * @todo 根据webpackdevserver 设置出具有浏览器热更新的功能
+             */
             nodemon({
               script: path.join(DIST, 'server.js'),
               delay: 2 * 1000,

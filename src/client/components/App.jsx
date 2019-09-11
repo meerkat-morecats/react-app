@@ -10,7 +10,7 @@
  */
 import React from 'react';
 import { Switch, Route,Redirect, } from 'react-router-dom';
-import routeConfig from '../configuration/route.config';
+import routeConfig from '../route.config';
 // import routes from './routeConfig';
 
 /**

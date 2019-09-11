@@ -37,7 +37,7 @@ const prodConfig = {
 module.exports = merge(getConfig(), {
   mode: 'development',
   target: 'web',
-  entry: path.join(SRC, 'app.js'),
+  entry: path.join(SRC, 'client/app.js'),
   output: {
     path: path.join(DIST, 'assets'),
     publicPath: '/assets/',
@@ -71,8 +71,8 @@ module.exports = merge(getConfig(), {
     new CleanWebpackPlugin({cleanStaleWebpackAssets: true,}),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: path.join(SRC, 'index.html'),
+      template: path.join(SRC, 'client/index.html'),
       title: 'development',
-      favicon: path.join(SRC,'static/favicon.ico'),
+      favicon: path.join(SRC,'client/static/favicon.ico'),
     }),],
 },IS_PRD ? prodConfig : devConfig);

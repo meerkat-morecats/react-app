@@ -1,11 +1,10 @@
 import React from 'react';
-import { StaticRouter, withRouter,} from 'react-router-dom';
-import App from '../../components/App';
+import { StaticRouter,} from 'react-router-dom';
+import App from '../../client/components/App';
 import ReactDOMServer from 'react-dom/server';
 import path from 'path';
 import fs from 'fs';
-import routeConfig from '../../configuration/route.config';
-import Home from '../../components/pages/Home';
+import routeConfig from '../../client/route.config';
 
 const CWD = process.cwd();
 const ssrData ={ data:[
@@ -49,16 +48,6 @@ tags:[
 export default async function(req,res,next){
 
   const context = {};
-  const CSS_REG = /\.css$/;
-  /** 获取css内容 */
-
-  const cssReg=/<[^<>]+(stylesheet)[^<>]+>/g;
-  const distFiles = fs.readdirSync(path.join(CWD,'dist/assets'));
-  const cssFiles = distFiles.filter(item=>CSS_REG.test(item));
-  const cssContent = cssFiles.reduce((content,filename)=>{
-    return content+ fs.readFileSync(path.join(CWD,'dist/assets',filename));
-  },'');
-
   /**
    * @description 加入了StaticRouter  data-reactroot 属性不见了
    */
@@ -76,16 +65,9 @@ export default async function(req,res,next){
   const tpl = fs.readFileSync(path.join(CWD, 'dist/assets/index.html'),'utf-8');
 
   const html = tpl
-    // .replace(cssReg,'')
-    // .replace(testReg,'')
     .replace('<!-- MARKUP -->', markup)
-    // .replace('<!-- INNER_STYLE -->',`<style type="text/css">${cssContent}</style>`)
     .replace('/*getInitialProps*/',`window.__SSR_DATA__=${JSON.stringify(ssrData)}`);
-    // .replace('<div id="root"><div class="home-wrapper">','<div id="root"><div class="home-wrapper" data-reactroot="">');
 
-  // console.log(html);
-  console.log('context.url:',context.url);
-  console.log('req.path:',req.path);
   res.append('content-type', 'text/html; charset=utf-8');
   // 处理重定向
   if (context.url) {

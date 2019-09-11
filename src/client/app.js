@@ -14,7 +14,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, } from 'react-router-dom';
 import App from './components/App';
 import './static/scss/main.scss';
-import routeConfig from './configuration/route.config';
+import routeConfig from './route.config';
 
 
 ReactDOM.hydrate(

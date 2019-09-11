@@ -1,6 +1,6 @@
 // import  from '@loadable/component';
-import Home from '../components/pages/Home';
-import List from '../components/pages/List';
+import Home from './components/pages/Home';
+import List from './components/pages/List';
 export default [
   {
     component: List,
