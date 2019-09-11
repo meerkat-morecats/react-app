@@ -47,7 +47,6 @@ tags:[
  *
  */
 export default async function(req,res,next){
-  console.log(`request comming >>> '${req.url}'`);
 
   const context = {};
   const CSS_REG = /\.css$/;
@@ -59,7 +58,10 @@ export default async function(req,res,next){
   const cssContent = cssFiles.reduce((content,filename)=>{
     return content+ fs.readFileSync(path.join(CWD,'dist/assets',filename));
   },'');
-  // @todo 在这里加入 root 元素，要不然会有警告
+
+  /**
+   * @description 加入了StaticRouter  data-reactroot 属性不见了
+   */
   const markup=ReactDOMServer.renderToString(
     <StaticRouter
       context={context}
@@ -74,15 +76,16 @@ export default async function(req,res,next){
   const tpl = fs.readFileSync(path.join(CWD, 'dist/assets/index.html'),'utf-8');
 
   const html = tpl
-    .replace(cssReg,'')
+    // .replace(cssReg,'')
     // .replace(testReg,'')
     .replace('<!-- MARKUP -->', markup)
-    .replace('<!-- INNER_STYLE -->',`<style type="text/css">${cssContent}</style>`)
+    // .replace('<!-- INNER_STYLE -->',`<style type="text/css">${cssContent}</style>`)
     .replace('/*getInitialProps*/',`window.__SSR_DATA__=${JSON.stringify(ssrData)}`);
     // .replace('<div id="root"><div class="home-wrapper">','<div id="root"><div class="home-wrapper" data-reactroot="">');
 
   // console.log(html);
-
+  console.log('context.url:',context.url);
+  console.log('req.path:',req.path);
   res.append('content-type', 'text/html; charset=utf-8');
   // 处理重定向
   if (context.url) {

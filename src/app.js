@@ -17,7 +17,6 @@ import './static/scss/main.scss';
 import routeConfig from './configuration/route.config';
 
 
-
 ReactDOM.hydrate(
   <BrowserRouter>
     <App routes={routeConfig}

@@ -3,8 +3,36 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
-const { SRC, DIST, } = require('./PATH');
+const { SRC, DIST, ENV_DEVELOPMENT,ENV_PRODUCTION,} = require('./PATH');
 const { getConfig, IS_PRD, } = require('./webpack.common');
+
+const devConfig = {
+  mode:ENV_DEVELOPMENT,
+  output:{
+    filename:'[name].js',
+    chunkFilename:'[name].chunk.js',
+  },
+  devtool:'cheap-module-eval-source-map',
+  watch:true,
+  plugins:[
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+};
+
+const prodConfig = {
+  mode:ENV_PRODUCTION,
+  output:{
+    filename:'[name].[hash].js',
+    chunkFilename:'[name].[hash].chunk.js',
+  },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+    // 'react-router-dom':'ReactRouterDom',
+  },
+  devtool:'eval',
+  plugins:[],
+};
 
 module.exports = merge(getConfig(), {
   mode: 'development',
@@ -13,17 +41,9 @@ module.exports = merge(getConfig(), {
   output: {
     path: path.join(DIST, 'assets'),
     publicPath: '/assets/',
-    filename: !IS_PRD ? '[name].js' : '[name].[hash].js',
-    chunkFilename: !IS_PRD ? '[name].js' : '[name].[hash].chunk.js',
   },
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM',
-    // 'react-router-dom':'ReactRouterDom',
-  },
+
   stats: 'errors-only',
-  devtool: IS_PRD?'eval':'cheap-module-eval-source-map',
-  watch: !IS_PRD ,
   optimization: {
     minimize: true,
     runtimeChunk: 'single',
@@ -46,7 +66,7 @@ module.exports = merge(getConfig(), {
     },
 
   },
-  plugins: IS_PRD?[
+  plugins:[
     new webpack.NamedModulesPlugin(),
     new CleanWebpackPlugin({cleanStaleWebpackAssets: true,}),
     new HtmlWebpackPlugin({
@@ -54,21 +74,5 @@ module.exports = merge(getConfig(), {
       template: path.join(SRC, 'index.html'),
       title: 'development',
       favicon: path.join(SRC,'static/favicon.ico'),
-    }),]:[
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new CleanWebpackPlugin({
-      cleanStaleWebpackAssets: true,
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.join(SRC, 'index.html'),
-      title: 'development',
-      favicon: path.join(SRC,'static/favicon.ico'),
-    }),
-    // new MiniCssExtractPlugin({
-    //   filename: !IS_PRD ? '[name].css' : '[name].[hash].css',
-    //   chunkFilename: !IS_PRD ? '[id].css' : '[id].[hash].css',
-    // }),
-  ],
-});
+    }),],
+},IS_PRD ? prodConfig : devConfig);

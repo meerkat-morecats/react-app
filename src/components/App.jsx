@@ -22,7 +22,6 @@ import routeConfig from '../configuration/route.config';
  */
 
 export default function App(props) {
-  console.log(props);
   return (
     <Switch>
       {routeConfig.map((item,index) => {
@@ -36,8 +35,9 @@ export default function App(props) {
           exact={item.exact}
           key={index}
           path={item.path}
-          render={()=>
-            <item.component ssrData={props.ssrData} />}
+          render={()=>{
+            item.component.path=item.path;
+            return <item.component ssrData={props.ssrData} />;}}
         />;
       })
       }

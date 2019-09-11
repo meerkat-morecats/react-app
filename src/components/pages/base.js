@@ -19,7 +19,7 @@ export function getInitialState(props, component, setFunctions) {
         });
       }
     }
-  }, [1,]);
+  }, []);
 }
 
 export function getProps(props, key, defaultValue) {

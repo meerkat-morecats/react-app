@@ -10,18 +10,17 @@
  */
 
 const path = require('path');
-// const webpakc = require('path');
 const EventHooksPlugin = require('event-hooks-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const merge = require('webpack-merge');
 const nodemon = require('nodemon');
-const { getConfig, IS_PRD, } = require('./webpack.common');
+const { getConfig, IS_PRD,ENV_PRODUCTION ,ENV_DEVELOPMENT,} = require('./webpack.common');
 const { SRC, DIST, } = require('./PATH');
 
 let running = false;
 
 module.exports = merge(getConfig(), {
+  mode: IS_PRD ? ENV_PRODUCTION : ENV_DEVELOPMENT,
   entry: path.join(SRC, 'server/index.js'),
   target: 'node',
   output: {
@@ -30,7 +29,7 @@ module.exports = merge(getConfig(), {
     libraryTarget: 'commonjs2',
   },
   stats: 'errors-only',
-  externals: [nodeExternals(),],
+  externals: [nodeExternals(),'*.css','*.scss',],
   plugins: [
     new EventHooksPlugin({
       done: () => {

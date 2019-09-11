@@ -6,6 +6,8 @@ import './style.scss';
 export default function List(props) {
   const [data, setData,] = useState(getProps(props, 'data', {}));
   getInitialState(props, List, { data: setData, });
+
+
   return (
     <div className="test">
       <div className="test">list page</div>

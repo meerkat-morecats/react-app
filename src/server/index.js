@@ -20,7 +20,6 @@ app.use(favicon(path.join(process.cwd(), 'dist/assets', 'favicon.ico')));
 
 app.use('/api', (req, res) => {
   // 转发路由
-  console.log('get api');
   res.json({ data:[
     {
       to: '/abc',

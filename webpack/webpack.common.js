@@ -109,21 +109,5 @@ exports.getConfig = function() {
       }),
     ],
   };
-  // if (IS_PRD) {
-  //   config.plugins.push(
-  //     new webpack.BannerPlugin({
-  //       banner:
-  //         "react-ssr version : " + packageInfo.version + " , file : [file]"
-  //     })
-  //   );
-
-  //   config.optimization = {
-  //     // minimize: IS_PRD,
-  //     minimizer: [new OptimizeCSSAssetsPlugin()],
-  //     mergeDuplicateChunks: true
-  //   };
-  // } else {
-  //   config.devtool = "cheap-module-eval-source-map";
-  // }
   return config;
 };
