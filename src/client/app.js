@@ -11,17 +11,14 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import App from './components/App';
 import './static/scss/main.scss';
 import routeConfig from './route.config';
 
-
 ReactDOM.hydrate(
-  <BrowserRouter>
-    <App routes={routeConfig}
-      ssrData={window.__SSR_DATA__}
-    />
-  </BrowserRouter>
-  , document.getElementById('root'));
-
+    <BrowserRouter>
+        <App routes={routeConfig()} ssrData={window.__SSR_DATA__} ssrPage={window.__SSR_PAGE__} />
+    </BrowserRouter>,
+    document.getElementById('root'),
+);

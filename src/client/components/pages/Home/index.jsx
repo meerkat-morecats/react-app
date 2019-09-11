@@ -1,10 +1,10 @@
-import React, { useState, } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { getInitialState, getProps, } from '../base';
-import { Link, } from 'react-router-dom';
-import { Crumb, } from '../../common/Crumb';
-import { LazyList, } from '../../common/LazyList';
-import { Tag, } from '../../common/Tag';
+import { Link } from 'react-router-dom';
+import { getInitialState, getProps } from '../base';
+import { Crumb } from '../../common/Crumb';
+import { LazyList } from '../../common/LazyList';
+import { Tag } from '../../common/Tag';
 import './style.scss';
 
 /**
@@ -13,16 +13,16 @@ import './style.scss';
  */
 // 做的像目录一样
 export default function Home(props) {
-  const [data, setData,] = useState(getProps(props, 'data', []));
-  const [tags, setTags,] = useState(getProps(props, 'tags', []));
-  getInitialState(props, Home, { data: setData, tags: setTags, });
-  // getInitialState(props, Home, { tags: setTags });
-  debugger;
-  return (
-    <div className="home-wrapper">
-      <Crumb title="标签列表"></Crumb>
-      <section className="home-wrapper-tags">
-        {/* {tags.map(({ tagName, ...tag }) => (
+    const [data, setData] = useState(getProps(props, 'data', []));
+    const [tags, setTags] = useState(getProps(props, 'tags', []));
+    // debugger;
+    getInitialState(props, Home, { data: setData, tags: setTags });
+    // getInitialState(props, Home, { tags: setTags });
+    return (
+        <div className="home-wrapper">
+            <Crumb title="标签列表"></Crumb>
+            <section className="home-wrapper-tags">
+                {/* {tags.map(({ tagName, ...tag }) => (
           <Tag key={tagName}>
             <Link className="home-wrapper-tags__link"
               {...tag}
@@ -31,24 +31,22 @@ export default function Home(props) {
             </Link>
           </Tag>
         ))} */}
-      </section>
-      <Crumb title="文章列表"></Crumb>
-      <LazyList data={data} />
-    </div>
-  );
+            </section>
+            <Crumb title="文章列表"></Crumb>
+            <LazyList data={data} />
+        </div>
+    );
 }
 
-Home.getInitialProps = async () => {
-  debugger;
-  // const api = '';
-  // // 请求数据
-  // const data = await axios(api);
-  let ssrData = null;
-  await await axios.get('/api').then(res=>{
-    console.log(res.data);
-    ssrData =res.data;
-  });
-  return ssrData;
-  // return ssrData;
+Home.getInitialProps = async() => {
+    // const api = '';
+    // // 请求数据
+    // const data = await axios(api);
+    let ssrData = null;
+    await axios.get('/api').then((res) => {
+        console.log(res.data);
+        ssrData = res.data;
+    });
+    return ssrData;
+    // return ssrData;
 };
-

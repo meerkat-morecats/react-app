@@ -9,8 +9,8 @@
  * @description 前端路由配置
  */
 import React from 'react';
-import { Switch, Route,Redirect, } from 'react-router-dom';
-import routeConfig from '../route.config';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import routeConfig, { getComponent } from '../route.config';
 // import routes from './routeConfig';
 
 /**
@@ -22,26 +22,24 @@ import routeConfig from '../route.config';
  */
 
 export default function App(props) {
-  return (
-    <Switch>
-      {routeConfig.map((item,index) => {
-        if (item.redirect) {
-          return <Redirect
-            key={index}
-            to={item.path}
-          />;
-        }
-        return <Route
-          exact={item.exact}
-          key={index}
-          path={item.path}
-          render={()=>{
-            item.component.path=item.path;
-            return <item.component ssrData={props.ssrData} />;}}
-        />;
-      })
-      }
-
-    </Switch>
-  );
+    return (
+        <Switch>
+            {routeConfig().map((item, index) => {
+                if (item.redirect) {
+                    return <Redirect key={index} to={item.path} />;
+                }
+                return (
+                    <Route
+                        exact={item.exact}
+                        key={index}
+                        path={item.path}
+                        render={() => (
+                            // item.component.path=item.path;
+                            <item.component route-path={item.path} ssrData={props.ssrData} />
+                        )}
+                    />
+                );
+            })}
+        </Switch>
+    );
 }
