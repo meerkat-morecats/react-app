@@ -1,0 +1,8 @@
+@import "../../../static/scss/colors.scss";
+.tag-wrapper{
+  display: inline-block;
+  &__symbol{
+    padding: 0px 4px;
+    color: $red;
+  }
+}

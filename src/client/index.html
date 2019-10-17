@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <title></title> -->
+  <title>react</title>
+
+  <!-- <% for (var cssFile in htmlWebpackPlugin.files.css) { %>
+  <link href="<%= htmlWebpackPlugin.files.css[cssFile] %>" rel="stylesheet" />
+  <% } %> -->
+  <script>
+    /*getInitialProps*/
+  </script>
+</head>
+
+<body>
+  <div id="root">
+    <!-- MARKUP -->
+  </div>
+
+  <script src="https://cdn.bootcss.com/react/16.8.6/umd/react.production.min.js"></script>
+  <script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.production.min.js"></script>
+  <!-- <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script> -->
+  <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+  <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+  <% } %>
+  <noscript>
+    <h1>javascript error!</h1>
+  </noscript>
+</body>
+
+</html>
