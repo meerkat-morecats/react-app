@@ -1,3 +1,5 @@
+import ssr from './ssr';
+
 export default [
-  require('./ssr').default,
+    ssr,
 ];

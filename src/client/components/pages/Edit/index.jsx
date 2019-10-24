@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import marked from 'marked';
 import axios from '../../../../lib/axios';
 import Preview from './Preview';
+import Modal from './Modal';
 import './style.scss';
 
 function Edit(props) {
@@ -9,6 +10,7 @@ function Edit(props) {
     // getInitialState(props, Edit, { data: setData });
     const [html, setHtml] = useState();
     const [showPreview, setShowPreview] = useState(true);
+    const [modalVisible, setModalVisible] = useState(false);
     const divRef = useRef();
     const paramsRef = useRef({});
 
@@ -26,10 +28,18 @@ function Edit(props) {
         setShowPreview(state);
     };
 
-    /**
-     * @todo 增加弹窗，输入验证码，提交
-     */
-    const upload = () => {};
+    const handleClickUpload = () => {
+        axios.post('/api/blog/captcha').then(() => {
+            setModalVisible(true);
+        });
+    };
+
+    const onSubmit = (captcha) => {
+        axios.post(`/api/blog/upload/${captcha}`, paramsRef.current).then((res) => {
+            console.log(res);
+            setModalVisible(false);
+        });
+    };
 
     useEffect(() => {
         divRef.current.style.height = `${document.body.clientHeight - 30}px`;
@@ -93,7 +103,7 @@ function Edit(props) {
                         </svg>
                     </div>
                 )}
-                <div className="edit-wrapper__operate__btn" onClick={upload} title="上传">
+                <div className="edit-wrapper__operate__btn" onClick={handleClickUpload} title="上传">
                     <svg
                         t="1571206821613"
                         viewBox="0 0 1024 1024"
@@ -110,30 +120,13 @@ function Edit(props) {
                         ></path>
                     </svg>
                 </div>
-                {/* <div className="edit-wrapper__operate__btn" title="">
-                    <svg
-                        t="1571206849112"
-
-                        viewBox="0 0 1024 1024"
-                        version="1.1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        p-id="3331"
-                        width="100%"
-                        height="100%"
-                    >
-                        <path
-                            d="M128 896h768v-64H128zM256 704v-146.752l224-224L626.752 480l-224 224H256zM608 205.248L754.752 352 672 434.752 525.248 288 608 205.248z m214.624 169.408l0.032-0.032a32 32 0 0 0 0-45.248l-0.032-0.032-191.968-191.968-0.032-0.032a32 32 0 0 0-45.248 0l-0.032 0.032L192 530.752V768h237.248l393.376-393.344z"
-                            fill="#75dab7"
-                            p-id="3332"
-                        ></path>
-                    </svg>
-                </div> */}
             </div>
             <div className="textarea-wrapper">
                 <input placeholder="请输入标题" className="title-input" onChange={titleChange} />
                 <textarea id="textarea" wrap="hard" onChange={inputChange}></textarea>
             </div>
             <Preview html={html} hidden={!showPreview} />
+            <Modal visible={modalVisible} onSubmit={onSubmit} />
         </div>
     );
 }
