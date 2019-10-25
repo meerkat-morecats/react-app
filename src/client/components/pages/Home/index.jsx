@@ -47,7 +47,7 @@ Home.getInitialProps = async(host = '') => {
     await axios.get(`${host}/api/blog/list/`).then((res) => {
         ssrData = res.data;
     });
-    ssrData.title = '康凯的技术日记';
+    ssrData.title = '康凯的技术博客';
     return ssrData;
     // return ssrData;
 };
