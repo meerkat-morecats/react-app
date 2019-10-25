@@ -11,8 +11,8 @@ function LazyList({ data }) {
                     <Link className="lazy-list-wrapper__item__link" to={`/article/${item.id}`}>
                         <span className="lazy-list-wrapper__item__date">
                             {`${item.createTime}`.length === 10
-                                ? moment(moment.unix(item.createTime)).format('YYYY.MM.DD HH:mm:ss')
-                                : moment(item.createTime).format('YYYY.MM.DD HH:mm:ss')}
+                                ? moment(moment.unix(item.createTime)).format('[YYYY.MM.DD HH:mm:ss]')
+                                : moment(item.createTime).format('[YYYY.MM.DD HH:mm:ss]')}
                         </span>
                         <span className="lazy-list-wrapper__item__title">{item.title}</span>
                     </Link>
