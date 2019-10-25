@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.scss';
 
 export default function Header(props) {
     // return <div className="header-wrapper">Welcome to Alibaba Cloud Elastic Compute Service !</div>;
