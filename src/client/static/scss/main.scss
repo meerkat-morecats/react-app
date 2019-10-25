@@ -16,6 +16,16 @@ body {
   box-sizing: border-box;
 }
 
+a {
+  color: $blue1;
+  &:hover{
+    color: $blue2;
+  }
+  &:active ,&:visited{
+    color: $blue3;
+  }
+}
+
 blockquote {
   position: relative;
 
@@ -29,7 +39,7 @@ blockquote {
   }
 }
 
-code {
+pre {
   padding: 9px;
   color: #bbbbbb;
   background-color: #444444;
