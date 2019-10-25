@@ -5,6 +5,7 @@ import { getInitialState, getProps } from '../base';
 import { Crumb } from '../../common/Crumb';
 import { LazyList } from '../../common/LazyList';
 import { Tag } from '../../common/Tag';
+import Header from '../../common/Header';
 import './style.scss';
 
 /**
@@ -15,13 +16,13 @@ import './style.scss';
 export default function Home(props) {
     const [data, setData] = useState(getProps(props, 'data', []));
     // const [tags, setTags] = useState(getProps(props, 'tags', []));
-    // debugger;
     // getInitialState(props, Home, { data: setData, tags: setTags });
     getInitialState(props, Home, { data: setData });
 
     // getInitialState(props, Home, { tags: setTags });
     return (
         <div className="home-wrapper">
+            <Header />
             {/* <Crumb title="标签列表"></Crumb>
             <section className="home-wrapper-tags">
                 {tags.map(({ tagName, ...tag }) => (
@@ -46,7 +47,7 @@ Home.getInitialProps = async(host = '') => {
     await axios.get(`${host}/api/blog/list/`).then((res) => {
         ssrData = res.data;
     });
-    ssrData.title = '文章列表';
+    ssrData.title = '康凯的技术日记';
     return ssrData;
     // return ssrData;
 };
