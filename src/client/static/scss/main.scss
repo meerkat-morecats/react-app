@@ -29,10 +29,11 @@ blockquote {
   }
 }
 
-pre {
-  padding: 4px 2px;
+code {
+  padding: 9px;
   color: #bbbbbb;
   background-color: #444444;
+  white-space: pre-wrap;
 }
 
 // a {
