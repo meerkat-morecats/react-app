@@ -4,8 +4,10 @@ import './style.scss';
 export default function Preview(props) {
     const ref = useRef();
 
-    useEffect(() => {
-        ref.current.innerHTML = props.html || '';
-    }, [props.html]);
-    return <div className={props.hidden ? 'preview-wrapper hidden' : 'preview-wrapper'} ref={ref}></div>;
+    return (
+        <div
+            className={props.hidden ? 'preview-wrapper hidden' : 'preview-wrapper'}
+            dangerouslySetInnerHTML={{ __html: props.html }}
+        ></div>
+    );
 }

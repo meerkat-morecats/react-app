@@ -1,6 +1,7 @@
 // import  from '@loadable/component';
 import Home from './components/pages/Home';
 import { Edit } from './components/pages/Edit';
+import Article from './components/pages/Article';
 
 export default function routeConfig() {
     return [
@@ -18,6 +19,11 @@ export default function routeConfig() {
             component: Edit,
             exact: true,
             path: '/edit/:id', // 前端路由规则
+        },
+        {
+            component: Article,
+            exact: true,
+            path: '/article/:id', // 前端路由规则
         },
         {
             redirect: true,
@@ -61,6 +67,7 @@ export function isMatch(url, rule) {
 export function getComponent(url, matchF = isMatch) {
     const _routes = routeConfig();
     let redirectPath = null;
+    console.log(url);
     // 第一步
     // 做路由的绝对相等匹配
     for (let i = 0; i < _routes.length; i++) {

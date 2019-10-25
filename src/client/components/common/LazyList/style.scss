@@ -1,28 +1,36 @@
 @import "../../../static/scss/colors.scss";
-.lazy-list-wrapper{
+
+.lazy-list-wrapper {
   list-style: none;
   margin: 0;
   padding: 0;
-  &__item{
-    &__link{
+
+  &__item {
+    padding-top: 8px;
+    &__link {
+      padding: 0 8px 0;
       color: $white;
       text-decoration: none;
-      &:active{
+
+      &:active {
         color: $blue3;
       }
-      &:visited{
+
+      &:visited {
         color: $white;
       }
-      &:hover{
+
+      &:hover {
         color: $blue3;
         border-bottom: 1px solid $blue3;
       }
     }
-    &__date{
-      padding-right: 12px;
-    }
-    &__title{
 
+    &__date {
+      padding-right: 12px;
+      color: $font_grey;
     }
+
+    &__title {}
   }
 }

@@ -1,0 +1,20 @@
+@import '../../../static/scss/colors.scss';
+
+.article-wrapper{
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    &__title{
+        text-align: center;
+        font-size: 24px;
+        padding: 8px 0;
+    }
+    &__date{
+        text-align: center;
+        color: $font_grey;
+        font-size: 12px;
+    }   
+    &__content{
+        padding: 0px 12px;
+    }
+}

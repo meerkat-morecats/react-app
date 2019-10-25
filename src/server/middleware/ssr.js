@@ -15,7 +15,7 @@ export default async function(req, res, next) {
     const component = getComponent(req.url);
 
     try {
-        const ssrData = await component.getInitialProps(host);
+        const ssrData = await component.getInitialProps(host, req.url);
         // const _test = await axios.get('http://localhost:8989/api');
         // console.log(`test:${_test}`);
         const markup = ReactDOMServer.renderToString(
