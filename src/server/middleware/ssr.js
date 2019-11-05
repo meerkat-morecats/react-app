@@ -16,8 +16,7 @@ export default async function(req, res, next) {
 
     try {
         const ssrData = await component.getInitialProps(host, req.url);
-        // const _test = await axios.get('http://localhost:8989/api');
-        // console.log(`test:${_test}`);
+
         const markup = ReactDOMServer.renderToString(
             <StaticRouter context={context} location={req.url}>
                 <App routes={routeConfig()} ssrData={ssrData} />

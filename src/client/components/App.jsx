@@ -34,8 +34,7 @@ export default function App(props) {
                         key={index}
                         path={item.path}
                         render={() => {
-                            // item.component.path=item.path;
-                            if (isMatch(props.ssrPage, item.path)) {
+                            if (typeof window === 'undefined' || isMatch(props.ssrPage, item.path)) {
                                 return <item.component ssrData={props.ssrData} />;
                             }
                             return <item.component />;
